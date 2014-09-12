@@ -20,13 +20,13 @@ class BayesDataTest < MicroTest::Test
     s2 = "I get $20.00 on 2014-05-21 and on 09MAR04"
     s3 = "I'll pay you $60.21 on 06-20-2014"
 
-    @s11 = Trex::Classifier::BayesData.remove_date_time_money(s1)
-    @s22 = Trex::Classifier::BayesData.remove_date_time_money(s2)
-    @s33 = Trex::Classifier::BayesData.remove_date_time_money(s3)
+    @s11 = Trex::Classifier::BayesData.remove_date_time(s1)
+    @s22 = Trex::Classifier::BayesData.remove_date_time(s2)
+    @s33 = Trex::Classifier::BayesData.remove_date_time(s3)
 
-    assert @s11 == "This  datetimemoney  will be paid on  datetimemoney "
-    assert @s22 == "I get  datetimemoney  on  datetimemoney  and on  datetimemoney "
-    assert @s33 == "I'll pay you  datetimemoney  on  datetimemoney "
+    assert @s11 == "This $140 will be paid on  datetimemoney "
+    assert @s22 == "I get $20.00 on  datetimemoney  and on  datetimemoney "
+    assert @s33 == "I'll pay you $60.21 on  datetimemoney "
   end
 
   test "index frequency has correct counts" do
@@ -42,11 +42,5 @@ class BayesDataTest < MicroTest::Test
 
     #{:sentenc=>1, :need=>1, :punct=>8, :check=>1, :index=>1, :correct=>1, :okai=>1, :Here=>1, :is=>2, :a=>1, :sentence=>1, :that=>3, :I=>1, :c=>1, :to=>1, :the=>1, :and=>1, :okay=>1}
   end
-
-#  test "" do
-#  end
-#
-#  test "" do
-#  end
 
 end

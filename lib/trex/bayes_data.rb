@@ -9,8 +9,8 @@ module Trex
           s.gsub(/(\,)|(\?)|(\.)|(\!)|(\;)|(\:)|(\")|(\@)|(\#)|(\$)|(\%)|(\^)|(\&)|(\*)|(\()|(\))|(\_)|(\=)|(\+)|(\[)|(\])|(\\)|(\|)|(\<)|(\>)|(\/)|(\`)|(\{)|(\})/, ' punct ')
         end
 
-        def remove_date_time_money(s)
-          s.gsub(/(\d{2}\w{3}\d{2})|(\d{2}\:\d{2})|(\d{2,4}\-\d{2,4}-\d{2,4})|(\d{1,3}\/\d{2,4}\/\d{2,4}|(\$\d+(\.\d{2})|(\$\d+)))/, ' datetimemoney ')
+        def remove_date_time(s)
+          s.gsub(/(\d{2}\w{3}\d{2})|(\d{2}\:\d{2})|(\d{2,4}\-\d{2,4}-\d{2,4})|(\d{1,3}\/\d{2,4}\/\d{2,4})/, ' datetimemoney ')
         end
 
         # Return a Hashed Index of words => instance_count. 
@@ -24,7 +24,7 @@ module Trex
         # Return a filtered word freq index without extra punctuation or short words
         def clean_filtered_index(text)
           rp = remove_punct(text).gsub(/[^\w\s]/,"")
-          filtered_index remove_date_time_money(rp).split
+          filtered_index remove_date_time(rp).split
         end
 
         # Return a word freq index without extra punctuation
