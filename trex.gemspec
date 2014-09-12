@@ -5,7 +5,7 @@ require 'trex/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "trex"
-  spec.version       = "0.0.1" #Trex::VERSION
+  spec.version       = Trex::VERSION
   spec.authors       = ["Joshua Bowles"]
   spec.email         = ["jbowayles@gmail.com"]
   spec.description   = "Simple text processing for small data sets."
