@@ -1,3 +1,4 @@
+require_relative "trex/stop_word"
 require_relative "trex/corpus"
 require_relative "trex/corpus_formats/brown_corpus_file"
 require_relative "trex/n_gram"

@@ -1,12 +1,11 @@
 require 'fast_stemmer'
-require 'yaml'
 
 module Trex
   module Classifier
     class BayesData
       class << self
 
-        @@stopwords = Trex::StopWord.load
+        @@stop_words = Trex::StopWord::LIST
 
         # Remove all kinds of explicit punctuation. 
         def remove_punct(s)

@@ -10,3 +10,11 @@ The the small domain focus of this classifier can most be gleaned from the `Baye
 
 ### Examples
 See the tests for examples.
+
+## Stopwords
+A class provided so you can append or delete from it if needed.
+
+```ruby
+Trex::StopWord::LIST << "goobly"
+Trex::StopWord::LIST.delete("goobly")
+```
