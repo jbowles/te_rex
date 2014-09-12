@@ -6,7 +6,7 @@ class BayesTest < MicroTest::Test
 
   @@norefund = ["non-refundable", "This rate is non-refundable and cannot be changed or cancelled - if you do choose to change or cancel this booking you will not be refunded any of the payment."]
 
-  test "Simple case classifier" do
+  test "Exact match classifier" do
 
     @cls = Trex::Classifier::Bayes.new("Refund", "NonRefund", "PartRefund")
 
