@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = "0.0.1" #Trex::VERSION
   spec.authors       = ["Joshua Bowles"]
   spec.email         = ["jbowayles@gmail.com"]
-  spec.description   = "Simple text processing."
-  spec.summary       = "Basic NLP stuff for small non-cpu intensive tasks."
+  spec.description   = "Simple text processing for small data sets."
+  spec.summary       = "Basic NLP stuff for small data sets. Has n-gram, classification, and access to brown corpus."
   spec.homepage      = ""
   spec.license       = "MIT"
 
