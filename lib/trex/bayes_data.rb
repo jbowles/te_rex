@@ -6,7 +6,7 @@ module Trex
     class BayesData
       class << self
 
-        @@stopwords = YAML::load(File.open("../../corpi/stopwords.yml"))
+        @@stopwords = Trex::StopWord.load
 
         # Remove all kinds of explicit punctuation. 
         def remove_punct(s)
