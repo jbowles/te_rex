@@ -6,11 +6,15 @@ module Trex
       class << self
         # Remove punctuation. 
         def remove_punct(s)
-          s.gsub(/(\,)|(\?)|(\.)|(\!)|(\;)|(\:)|(\")|(\@)|(\#)|(\$)|(\%)|(\^)|(\&)|(\*)|(\()|(\))|(\_)|(\=)|(\+)|(\[)|(\])|(\\)|(\|)|(\<)|(\>)|(\/)|(\`)|(\{)|(\})/, ' punct ')
+          s.gsub(/(\,)|(\?)|(\.)|(\!)|(\;)|(\:)|(\")|(\@)|(\#)|(\$)|(\%)|(\^)|(\&)|(\*)|(\()|(\))|(\_)|(\=)|(\+)|(\[)|(\])|(\\)|(\|)|(\<)|(\>)|(\/)|(\`)|(\{)|(\})/, '')
         end
 
         def remove_date_time(s)
-          s.gsub(/(\d{2}\w{3}\d{2})|(\d{2}\:\d{2})|(\d{2,4}\-\d{2,4}-\d{2,4})|(\d{1,3}\/\d{2,4}\/\d{2,4})/, ' datetimemoney ')
+          s.gsub(/(\d{2}\w{3}\d{2})|(\d{2}\:\d{2})|(\d{2,4}\-\d{2,4}-\d{2,4})|(\d{1,3}\/\d{2,4}\/\d{2,4})/, 'datetime')
+        end
+
+        def money_term(s)
+          s.gsub(/(\$\d+\.\d+)|(\$\d+)|(\d+\.\d+)/, 'moneyterm')
         end
 
         # Return a Hashed Index of words => instance_count. 
@@ -43,7 +47,6 @@ module Trex
           idx = Hash.new(0)
           word_array.each do |word|
             word.downcase!
-            #if !CORPUS_SKIP_WORDS.include?(word) && word.length > 2
             if !@@stop_words.include?(word) && word.length > 2
               idx[word.stem.intern] += 1
             end
@@ -57,7 +60,6 @@ module Trex
           idx = Hash.new(0)
           word_array.each do |word|
             word.downcase!
-            #if !CORPUS_SKIP_WORDS.include?(word) && word.length > 2
             if !@@stop_words.include?(word) && word.length > 2
               idx[word.intern] += 1
             end
