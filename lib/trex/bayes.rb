@@ -1,5 +1,5 @@
 #
-# Refactor of Lucas Carlson (Copyright (c) 2005 lucas@rufy.com)
+# Refactor of Lucas Carlson's classifier (Copyright (c) 2005 lucas@rufy.com)
 #
 
 module Trex
@@ -59,25 +59,3 @@ module Trex
     end
   end
 end
-
-#
-#
-# cat = Trex::Classifier::Bayes.new 'Interesting', 'Uninteresting'
-# cat.train("interesting", "here are some good words. I hope you love them")
-# cat.train("Uninteresting", "here are some bad words, I hate you")
-# cat.classify "I hate bad words and you" 
-# # returns 'Uninteresting'
-#
-#
-#
-# #
-#
-# cat = Trex::Classifier::Bayes.new 'Refund', 'Norefund', 'PartRefund'
-# cat.train("Refund", "ALL RESERVATIONS MUST BE CANCELLED 24 HOURS PRIOR TO HOST TIME UNLESS DEPOSIT REQUIRED IF THIS RESERVATION HAS BEEN MADE ELECTRONICALLY PLEASE CANCEL IT ELECTRONICALLY TO AVOID CONFUSION AND A NO SHOW BILL. POLICY SUBJECT TO CHANGE. ."
-# cat.train("NoRefund", "If you cancel or change your reservation after 4:00 PM on 9/11/14, the hotel will charge you for the total cost of your reservation.")
-# cat.train("PartRefund", "If you cancel or change your reservation before 6:00 PM on 9/11/14, the hotel will charge you $202. If you cancel or change your reservation after 6:00 PM on 9/11/14, the hotel will charge you for the total cost of your reservation.")
-# cat.classify 
-
-
-
-# cat.train("Refund", "This rate is non-refundable and cannot be changed or cancelled - if you do choose to change or cancel this booking you will not be refunded any of the payment."
