@@ -193,6 +193,8 @@ module Trex
       "Nov",
       "Dec",
       "Monday",
+      :monday,
+      :Monday,
       "Mon",
       "Tuesday",
       "Tue",

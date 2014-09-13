@@ -5,8 +5,6 @@ module Trex
     class BayesData
       class << self
 
-        @@stop_words = Trex::StopWord::LIST
-
         # Remove all kinds of explicit punctuation. 
         def remove_punct(s)
           s.gsub(/(\,)|(\?)|(\.)|(\!)|(\;)|(\:)|(\")|(\@)|(\#)|(\$)|(\%)|(\^)|(\&)|(\*)|(\()|(\))|(\_)|(\=)|(\+)|(\[)|(\])|(\\)|(\|)|(\<)|(\>)|(\/)|(\`)|(\{)|(\})/, '')
@@ -64,7 +62,7 @@ module Trex
           idx = Hash.new(0)
           word_array.each do |word|
             word.downcase!
-            if !@@stop_words.include?(word) && word.length > 2
+            if !Trex::StopWord::LIST.include?(word) && word.length > 2
               idx[word.stem.intern] += 1
             end
           end
@@ -77,7 +75,7 @@ module Trex
           idx = Hash.new(0)
           word_array.each do |word|
             word.downcase!
-            if !@@stop_words.include?(word) && word.length > 2
+            if !Trex::StopWord::LIST.include?(word) && word.length > 2
               idx[word.intern] += 1
             end
           end
