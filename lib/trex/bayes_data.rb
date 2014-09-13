@@ -29,31 +29,31 @@ module Trex
         # Each word in the string is interned and shows count in the document.
         def index_frequency(text)
           cfi = clean_stemmed_filtered_index(text)
-          cni = clean_naive_index(text)
+          cni = clean_filtered_index(text)
           cfi.merge(cni)
         end
 
+        def clean(text)
+          dt = date_time(text)
+          mt = money_term(dt)
+          rp = remove_punct(mt).gsub(/[^\w\s]/,"")
+          remove_cardinal(rp)
+        end
         # Return a filtered word freq index without extra punctuation or short words
         # Also remove any non-word chars without spaces (/[^\w\s]/)
         def clean_stemmed_filtered_index(text)
-          tx = remove_cardinal(text)
-          rp = remove_punct(tx).gsub(/[^\w\s]/,"")
-          dt = date_time(rp)
-          stemmed_filtered_index money_term(dt).split
+          stemmed_filtered_index clean(text).split
         end
 
         # Return a filtered word freq index without extra punctuation or short words
         # Also remove any non-word chars without spaces (/[^\w\s]/)
         def clean_filtered_index(text)
-          tx = remove_cardinal(text)
-          rp = remove_punct(tx).gsub(/[^\w\s]/,"")
-          dt = date_time(rp)
-          filtered_index money_term(dt).split
+          filtered_index clean(text).split
         end
 
         # Return a word freq index without extra punctuation
         def clean_naive_index(text)
-          naive_index remove_punct(text).split
+          naive_index clean(text).split
         end
 
         private

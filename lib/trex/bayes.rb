@@ -41,15 +41,15 @@ module Trex
             score[category.to_s] += Math.log(s/total.to_f)
           end
 
-          s = @category_counts.has_key?(category) ? @category_counts[category] : 0.1
-          score[category.to_s] += Math.log(s/training_count)
+          k = @category_counts.has_key?(category) ? @category_counts[category] : 0.1
+          score[category.to_s] += Math.log(k/training_count)
         end
 
         score
       end
 
       def classify(text)
-        (classifications(text).sort_by { |a| -a[1] })[0][0]
+        (classifications(text).sort_by{|a| -a[1]})[0][0]
       end
 
       def categories

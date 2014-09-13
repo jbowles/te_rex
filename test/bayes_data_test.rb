@@ -47,14 +47,10 @@ class BayesDataTest < MicroTest::Test
     s = "Here is a sentence $141.34 that that $60 that 123.56 I need & & ^ % $c#@ to check the index is correct and okay."
     result = Trex::Classifier::BayesData.index_frequency(s)
 
-    #assert result[:moneyterm] == 3
-    assert result[:that] == 3
-    assert result[:c] == 1
-    assert result[:Here] == 1
+    assert result[:moneyterm] == 3
     assert result[:sentenc] == 1
     assert result[:sentence] == 1
 
-    #{:sentenc=>1,:need=>1,:check=>1, :index=>1, :correct=>1, :okai=>1, :Here=>1, :is=>2, :a=>1, :sentence=>1, :that=>3, :I=>1, :c=>1, :to=>1, :the=>1, :and=>1, :okay=>1}
   end
 
 end
