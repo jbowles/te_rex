@@ -6,19 +6,21 @@ module Trex
   module Classifier
     class Bayes
 
+      class << self
+
+      end
+
+      attr_accessor :category_counts, :total_words
+
       def initialize(*categories)
         @clasif = Hash.new 
-        categories.each {|cat| @clasif[format_category_term(cat)] = Hash.new}
+        categories.each {|cat| @clasif[Trex::Format.category_term(cat)] = Hash.new}
         @total_words = 0
         @category_counts = Hash.new(0)
       end
 
-      def format_category_term(t)
-        t.capitalize.intern
-      end
-
       def train(ctgry, text)
-        category = format_category_term(ctgry)
+        category = Trex::Format.category_term(ctgry)
         @category_counts[category] += 1
 
         BayesData.index_frequency(text).each do |word, count| 
@@ -55,6 +57,18 @@ module Trex
       def categories
         @classif.keys.collect {|c| c.to_s}
       end
+
+      def under_trained?
+        max_threshold = (@total_words/self.category_counts.keys.count).to_f
+        tmp = []
+        @clasif.each_pair do |term,val|
+          cc = self.category_counts[term]
+          train_ratio = (@total_words/cc).to_f
+          tmp << [(train_ratio > max_threshold), term, "description" => {"training_ratio" => "#{train_ratio}", "threshold" => "#{max_threshold}", "category_counts" => "#{cc}", "total_words" => "#{@total_words}"}]
+        end
+        tmp.select {|ut| ut.first == true}
+      end
+
 
     end
   end
