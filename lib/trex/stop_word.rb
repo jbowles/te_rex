@@ -1,5 +1,3 @@
-require 'yaml'
-
 module Trex
   class StopWord
     LIST = [
