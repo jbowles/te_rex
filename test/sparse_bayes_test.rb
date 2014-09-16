@@ -4,7 +4,6 @@ class SparseBayesTest < MicroTest::Test
     "Free cancellation before 1201 AM on 9/17/14! If you cancel or change your reservation after 1201 AM on 9/17/14 the hotel will charge you for the total cost of your reservation.",
     "ALL RESERVATIONS MUST BE CANCELLED 24 HOURS PRIOR TO HOST TIME UNLESS DEPOSIT REQUIRED IF THIS RESERVATION HAS BEEN MADE ELECTRONICALLY PLEASE CANCEL IT ELECTRONICALLY TO AVOID CONFUSION AND A NO SHOW BILL. POLICY SUBJECT TO CHANGE. .",
     "Free cancellation before 800 PM on 9/20/14! If you cancel or change your reservation after 800 PM on 9/20/14 the hotel will charge you $158. If you cancel or change your reservation after 800 PM on 9/21/14 the hotel will charge you for the total cost of your reservation.",
-    "Any cancellation received within 2 days prior to arrival date will incur the first night charge. Failure to arrive at your hotel will be treated as a No-Show and will incur the first night charge (Hotel policy).",
     "free cancellation"
   ]
 
@@ -19,7 +18,7 @@ class SparseBayesTest < MicroTest::Test
     "This reservation is non-refundable. Cancellations or changes made at any time are subject to a 100% charge.",
     "This rate is non-refundable and cannot be changed or cancelled - if you do choose to change or cancel this booking you will not be refunded any of the payment.",
     "For the room type and rate that you've selected you are not allowed to change or cancel your reservation. If you cancel your room you will still be charged for the full reservation amount.",
-    "no refund"
+    "nonrefund"
   ]
 
   @@unknown = [
@@ -33,27 +32,27 @@ class SparseBayesTest < MicroTest::Test
   @@norefund.each {|txt| @@cls.train("Nonrefund", txt) }
   @@unknown.each {|txt| @@cls.train("Unknown", txt) }
 
-  test "Sparse Data Set Test: Exact match sould classify correctly" do
+  test "Sparse Data Set Test: Random exact match sould classify correctly" do
 
-    s1 = "Free cancellation before 1201 AM on 9/17/14! If you cancel or change your reservation after 1201 AM on 9/17/14 the hotel will charge you for the total cost of your reservation."
-    s2 = "Cancellations or changes made before 4:00 PM Eastern Time on Sep 11, 2014 are subject to a 1 Night Room & Tax penalty."
-    s3 = "This reservation is non-refundable. Cancellations or changes made at any time are subject to a 100% charge."
-    s4 = "will be determined"
+    s_refund = @@refund.sample
+    s_partial = @@partrefund.sample
+    s_non = @@norefund.sample
+    s_unk = @@unknown.sample
 
-    s11 = @@cls.classify(s1)
-    s22 = @@cls.classify(s2)
-    s33 = @@cls.classify(s3)
-    s44 = @@cls.classify(s4)
+    s_refund1 = @@cls.classify(s_refund)
+    s_partial1 = @@cls.classify(s_partial)
+    s_non1 = @@cls.classify(s_non)
+    s_unk1= @@cls.classify(s_unk)
 
-    assert s11 == "Refund"
-    assert s22 == "Partrefund"
-    assert s33 == "Nonrefund"
-    assert s44 == "Unknown"
+    assert s_refund1 == "Refund"
+    assert s_partial1 == "Partrefund"
+    assert s_non1 == "Nonrefund"
+    assert s_unk1 == "Unknown"
 
-    assert s11 != "Partrefund"
-    assert s22 != "Refund"
-    assert s33 != "Unknown"
-    assert s44 != "Nonrefund"
+    assert s_refund1 != "Partrefund"
+    assert s_partial1 != "Refund"
+    assert s_non1 != "Unknown"
+    assert s_unk1 != "Nonrefund"
   end
 
 
@@ -79,7 +78,7 @@ class SparseBayesTest < MicroTest::Test
 
     s1 = "free cancellation"
     s2 = "partial refund"
-    s3 = "no refund"
+    s3 = "nonrefund"
     s4 = "policy rate validated."
 
     s11 = @@cls.classify(s1)

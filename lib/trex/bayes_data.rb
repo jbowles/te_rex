@@ -33,25 +33,25 @@ module Trex
           cfi.merge(cni)
         end
 
+        # Return text with datetime and moneyterms replaced, remove cardinal terms (1st, 23rd, 42nd), remove punctuation and any non-word chars without spaces (/[^\w\s]/)
         def clean(text)
           dt = date_time(text)
           mt = money_term(dt)
           rp = remove_punct(mt).gsub(/[^\w\s]/,"")
           remove_cardinal(rp)
         end
-        # Return a filtered word freq index without extra punctuation or short words
-        # Also remove any non-word chars without spaces (/[^\w\s]/)
+
+        # Return a filtered word freq index with stemmed morphemes and without extra punctuation or short words
         def clean_stemmed_filtered_index(text)
           stemmed_filtered_index clean(text).split
         end
 
         # Return a filtered word freq index without extra punctuation or short words
-        # Also remove any non-word chars without spaces (/[^\w\s]/)
         def clean_filtered_index(text)
           filtered_index clean(text).split
         end
 
-        # Return a word freq index without extra punctuation
+        # Return a word freq index without downcasing, stemming, or filtering with stop list
         def clean_naive_index(text)
           naive_index clean(text).split
         end
