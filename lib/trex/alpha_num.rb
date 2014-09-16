@@ -4,7 +4,7 @@ module Trex
     @symbols = ['!','@','#','$','%','^','&','*','(',')','-','+','=','<','>','?','~']
     def self.gen
       ('a'..'z').map{|aleph| aleph}
-      .concat(('A'...'Z').map{|aleph2| aleph2})
+      .concat(('A'..'Z').map{|aleph2| aleph2})
       .concat(@symbols)
       .concat((1..20).map{|num| num})
     end
