@@ -2,3 +2,5 @@
 *.swp
 *.swo
 lib/train/*.rb
+corpi/brown/c*
+corpi/movie_review/cv*
