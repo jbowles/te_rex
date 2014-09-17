@@ -1,7 +1,5 @@
-
 require_relative "../lib/trex"
 class TrainedBayesTest < MicroTest::Test
-
 
   @@refund = Trex::Train::REFUND
   @@partrefund = Trex::Train::PARTREFUND
@@ -61,7 +59,7 @@ class TrainedBayesTest < MicroTest::Test
   test "Training Data Set Test: Micro examples should return correct classification" do
 
     s1 = "free cancellation"
-    s2 = "changes made before"
+    s2 = "If you cancel or change your reservation before"
     s3 = "non-refund"
     s4 = "policy rate validated."
 
