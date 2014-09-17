@@ -1,6 +1,7 @@
 # T-rex
 The Bayes classifier is written to solve some small domain sepcific problems. This means it is not a classififer to be used for general problems.
 
+Using Bayesian analysis because I wanted something that worked pretty good, was easy to implement, had a ruby runtime, and most importantly DID NOT REQUIRE VECTOR/MATRIX MULTIPLICATION (-- mostly because i don't want to introduce dependency on ruby C extensions for matrix multiplication, probably the GNU Scientific Library; though I am using `fast-stemmer`, which is a C extension.)
 
 ## Bayes
 This Bayes classifier was written specifically to classify `cancellation policies` and `error messages` from Hotel reservation providers. This doesn't mean it can't be used for other things, but it **does mean it should be used a general solution for anything.**
@@ -16,7 +17,7 @@ A class provided so you can append or delete from it if needed.
 ## Corpora
 
 ### Brown and Movie datasets
-Downloadable from the [NLTK scn trunk index](http://nltk.googlecode.com/svn/trunk/nltk_data/index.xml).
+Downloadable from the [NLTK svn trunk index](http://nltk.googlecode.com/svn/trunk/nltk_data/index.xml).
 
 Brown corpus is for part of speech tagging and is not organized for text classification.
 
