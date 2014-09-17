@@ -8,10 +8,4 @@ require_relative "corpus_formats/brown_file"
 require_relative "corpus_formats/movie_review_file"
 
 module Trex
-  def self.load_training_modules
-    Dir["#{File.dirname(__FILE__)}/train/**/*.rb"].each { |f| load(f) if !!(f =~ /^[^\.].+\.rb/)}
-  end
-
-  load_training_modules
-
 end

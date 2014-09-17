@@ -9,6 +9,12 @@ module Trex
         @klass = klass
       end
 
+      def build
+        files
+        train_sentences
+        test_sentences
+      end
+
       def files
         @files ||= Dir[@glob].map do |file|
           @klass.new(file)

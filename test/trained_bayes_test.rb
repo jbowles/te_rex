@@ -1,6 +1,8 @@
 require_relative "../lib/trex"
 class TrainedBayesTest < MicroTest::Test
 
+  #Dir["#{File.dirname(__FILE__)}/test_modules/**/*.rb"].each { |f| load(f) if !!(f =~ /^[^\.].+\.rb/)}
+
   @@refund = Trex::Train::REFUND
   @@partrefund = Trex::Train::PARTREFUND
   @@norefund = Trex::Train::NONREFUND
