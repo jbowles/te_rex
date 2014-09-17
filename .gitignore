@@ -2,6 +2,6 @@
 *.swp
 *.swo
 lib/train/*.rb
-corpi/brown/*
-corpi/movie_review/pos/*
-corpi/movie_review/neg/*
+corpora/brown/*
+corpora/movie/positive/*
+corpora/movie/negative/*
