@@ -8,13 +8,33 @@ This Bayes classifier was written specifically to classify `cancellation policie
 
 The the small domain focus of this classifier can most be gleaned from the `BayesData` class. It cleans the text in way specific to the goals I had in mind.
 
-### Examples
-See the tests for examples.
+## Examples
+### Corpus builder
+
+```rb
+pos_corpus = Trex::Corpus::Body.new('~/training_data/corpora/movie/positive/cv**', Trex::Format::BasicFile)
+pos_corpus.build
+
+# Then look at what you've got:
+pos_corpus.training.count #Array of sentences
+pos_corpus.testing.count  #Array of sentences
+pos_corpus.files.count    #Array of file paths
+pos_corpus.sample_size    #total files multiplied by 0.75; used to split files for test/train (0.25 for test, rest for train)
+
+
+#Or you could do all this
+pos_corpus.get_files
+pos_train = pos_corpus.partition_train
+pos_test = pos_corpus.partition_test
+```
+
 
 ## Stopwords
 A class provided so you can append or delete from it if needed.
 
+
 ## Corpora
+Some notes on corpora to download for testing.
 
 ### Brown and Movie datasets
 Downloadable from the [NLTK svn trunk index](http://nltk.googlecode.com/svn/trunk/nltk_data/index.xml).
