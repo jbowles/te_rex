@@ -2,7 +2,7 @@ module Trex
   module Corpus
     class Body
 
-      attr_accessor :files, :sample_size
+      attr_accessor :files, :sample_size, :training, :testing
 
       def initialize(glob, klass)
         @glob = glob
@@ -10,12 +10,12 @@ module Trex
       end
 
       def build
-        files
-        train_sentences
-        test_sentences
+        get_files
+        @training_sentences = partition_train
+        @testing_sentences = partition_test
       end
 
-      def files
+      def get_files
         @files ||= Dir[@glob].map do |file|
           @klass.new(file)
         end
@@ -23,13 +23,13 @@ module Trex
         @files
       end
 
-      def train_sentences
+      def partition_train
         @files[0..@sample_size].map do |file|
           file.scanner
         end.flatten
       end
 
-      def test_sentences
+      def partition_test
         @files[(@sample_size - 1)..-1].map do |file|
           file.scanner
         end.flatten
