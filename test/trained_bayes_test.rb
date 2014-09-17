@@ -124,10 +124,10 @@ class TrainedBayesTest < MicroTest::Test
 
   end
 
-test "Sparse Data Set Test: Training classes should NOT be undertrained... except 'Unknown'" do
-  res = @@cls.under_trained?
-  assert res[0].include? :Unknown
-end
+  test "Sparse Data Set Test: Training categories should NOT be undertrained... except 'Unknown'" do
+    res = @@cls.under_trained?
+    assert res[0].include? :Unknown
+  end
 
 end
 

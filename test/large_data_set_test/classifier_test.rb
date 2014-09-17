@@ -43,12 +43,25 @@ class ClassifierTest < MicroTest::Test
 
   test "positive training set should contain at least 60% 'positive' labels" do
     pos_ratio = ClassifierTest.postest
+    puts "***** Trained on #{@@pos_train.count} instances, test on #{@@pos_test.count}, number of Positive categories: #{@@cls.category_counts[:Positive]}"
+    puts "***** Accuracy of Positive classifier: #{pos_ratio}"
     assert pos_ratio > 0.60
   end
 
   test "negative training set should contain at least 60% 'negative' labels" do
     neg_ratio = ClassifierTest.negtest
+    puts "***** Trained on #{@@neg_train.count} instances, test on #{@@neg_test.count} instances, number of Negative categories: #{@@cls.category_counts[:Negative]}"
+    puts "***** Accuracy of Negative classifier: #{neg_ratio}"
     assert neg_ratio > 0.60
+  end
+
+
+  test "Training categories should NOT be undertrained" do
+    res = @@cls.training_description
+    puts "Undertraining data: #{res}"
+    final_result = res.select {|ut| ut.first == true}
+
+    assert final_result.empty?
   end
 
 end

@@ -5,3 +5,5 @@ lib/train/*.rb
 corpora/brown/*
 corpora/movie/positive/*
 corpora/movie/negative/*
+corpora/4uds/*
+corpora/20news-1828/*

@@ -28,6 +28,9 @@ module Trex
         # Return a Hashed Index of words => instance_count. 
         # Each word in the string is interned and shows count in the document.
         def index_frequency(text)
+          #naive_index(text.split)
+          #clean_filtered_index(text)
+          #clean_stemmed_filtered_index(text)
           cfi = clean_stemmed_filtered_index(text)
           cni = clean_filtered_index(text)
           cfi.merge(cni)
@@ -62,7 +65,7 @@ module Trex
           idx = Hash.new(0)
           word_array.each do |word|
             word.downcase!
-            if !Trex::StopWord::LIST.include?(word) && word.length > 2
+            if !Trex::StopWord::LIST.include?(word) #&& word.length > 2
               idx[word.stem.intern] += 1
             end
           end
@@ -75,7 +78,7 @@ module Trex
           idx = Hash.new(0)
           word_array.each do |word|
             word.downcase!
-            if !Trex::StopWord::LIST.include?(word) && word.length > 2
+            if !Trex::StopWord::LIST.include?(word) #&& word.length > 2
               idx[word.intern] += 1
             end
           end

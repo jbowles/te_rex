@@ -6,10 +6,6 @@ module Trex
   module Classifier
     class Bayes
 
-      class << self
-
-      end
-
       attr_accessor :category_counts, :total_words
 
       def initialize(*categories)
@@ -58,7 +54,7 @@ module Trex
         @classif.keys.collect {|c| c.to_s}
       end
 
-      def under_trained?
+      def training_description
         max_threshold = (@total_words/self.category_counts.keys.count).to_f
         tmp = []
         @clasif.each_pair do |term,val|
@@ -66,9 +62,12 @@ module Trex
           train_ratio = (@total_words/cc).to_f
           tmp << [(train_ratio > max_threshold), term, "description" => {"training_ratio" => "#{train_ratio}", "threshold" => "#{max_threshold}", "category_counts" => "#{cc}", "total_words" => "#{@total_words}"}]
         end
-        tmp.select {|ut| ut.first == true}
+        tmp
       end
 
+      def under_trained?
+        training_description.select {|ut| ut.first == true}
+      end
 
     end
   end
