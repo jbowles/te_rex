@@ -33,7 +33,7 @@ module Trex
   end
 end
 
-# pos_corpus = Trex::Corpus::Body.new('corpi/movie_review/pos/cv**', Trex::Corpus::MovieReviewFile)
+# pos_corpus = Trex::Corpus::Body.new('corpora/movie/positive/cv**', Trex::Corpus::MovieReviewFile)
 # pos_corpus.files
 # pos_corpus.sample_size
 # pos_train = pos_corpus.train_sentences

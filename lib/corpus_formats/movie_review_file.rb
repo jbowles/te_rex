@@ -15,7 +15,7 @@ module Trex
 
             unless stripped_line.nil? || stripped_line.empty?
               acc << line.split(' ').map do |word|
-                word.split('/').first
+                word.split(' ').first
               end.join(' ')
             end
           end

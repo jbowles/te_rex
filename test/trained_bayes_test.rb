@@ -3,10 +3,10 @@ require_relative "../lib/trex"
 class TrainedBayesTest < MicroTest::Test
 
 
-  @@refund = Trex::Train::REFUND_TRAIN
-  @@partrefund = Trex::Train::PARTREFUND_TRAIN
-  @@norefund = Trex::Train::NONREFUND_TRAIN
-  @@unknown = Trex::Train::UNKNOWN_TRAIN
+  @@refund = Trex::Train::REFUND
+  @@partrefund = Trex::Train::PARTREFUND
+  @@norefund = Trex::Train::NONREFUND
+  @@unknown = Trex::Train::UNKNOWN
 
   @@cls = Trex::Classifier::Bayes.new("Refund", "Partrefund", "Nonrefund", "Unknown")
   @@refund.each {|txt| @@cls.train("Refund", txt) }
