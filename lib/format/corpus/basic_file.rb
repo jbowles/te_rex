@@ -2,7 +2,6 @@ module Trex
   module Format
     require 'drb/drb'
     class BasicFile
-      include DRb::DRbUndumped
 
       def initialize
         @drb_uri = "druby://localhost:8787" 
