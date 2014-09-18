@@ -1,4 +1,6 @@
 # T-rex
+Alot of heft with a little reach.
+
 The Bayes classifier is written to solve some small domain sepcific problems. This means it is not a classififer to be used for general problems.
 
 Using Bayesian analysis because I wanted something that worked pretty good, was easy to implement, had a ruby runtime, and most importantly DID NOT REQUIRE VECTOR/MATRIX MULTIPLICATION (-- mostly because i don't want to introduce dependency on ruby C extensions for matrix multiplication, probably the GNU Scientific Library; though I am using `fast-stemmer`, which is a C extension.)
