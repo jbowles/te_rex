@@ -2,10 +2,11 @@ module Trex
   module Format
     require 'drb/drb'
     class BasicFile
+      #include DRb::DRbUndumped
 
-      def initialize
-        @drb_uri = "druby://localhost:8787" 
-      end
+      #def initialize
+      #  @drb_uri = "druby://localhost:8787" 
+      #end
 
       # Each line of file with Array object,
       # strip it, split by whitespace, map it, join

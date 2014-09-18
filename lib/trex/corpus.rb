@@ -13,10 +13,12 @@ module Trex
       get_files
       @training_set = partition_train
       @testing_set = partition_test
+      DRb.stop_service
     end
 
     def get_files
       @drb_server = DRb.start_service("druby://localhost:8787", @klass.new)
+      #$SAFE = 1
       @files ||= Dir[@glob].map {|f| f}
       @sample_size = (@files.count * 0.75).round
       @files
@@ -37,5 +39,4 @@ module Trex
     end
   end
 end
-
 
