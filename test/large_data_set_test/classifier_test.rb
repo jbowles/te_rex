@@ -4,38 +4,44 @@ class ClassifierTest < MicroTest::Test
   def self.setup
     @@cls = Trex::Classifier::Bayes.new("Positive", "Negative")
 
-    @pos_corpus = Trex::Corpus::Body.new("corpora/movie_reviews/pos/cv**", Trex::Format::BasicFile)
+    @pos_corpus = Trex::Corpus::Body.new("corpora/movie_reviews/pos/cv*", Trex::Format::BasicFile)
     @pos_corpus.get_files
+    #@pos_corpus.build
     @@pos_train = @pos_corpus.partition_train
     @@pos_test = @pos_corpus.partition_test
 
-    @neg_corpus = Trex::Corpus::Body.new("corpora/movie_reviews/neg/cv**", Trex::Format::BasicFile)
+    @neg_corpus = Trex::Corpus::Body.new("corpora/movie_reviews/neg/cv*", Trex::Format::BasicFile)
     @neg_corpus.get_files
+    #@neg_corpus.build
     @@neg_train = @neg_corpus.partition_train
     @@neg_test = @neg_corpus.partition_test
 
 
     @@pos_train.each {|txt| @@cls.train("Positive", txt)}
+    #@pos_corpus.training_set.each {|txt| @cls.train("Positive", txt)}
     @@neg_train.each {|txt| @@cls.train("Negative", txt)}
+    #@neg_corpus.training_set.each {|txt| @cls.train("Negative", txt)}
   end
 
   def self.postest
-    tmp =[]
+    pos_tmp =[]
+    #@pos_corpus.testing_set.each do |example|
     @@pos_test.each do |example| 
-      tmp << @@cls.classify(example)
+      pos_tmp << @@cls.classify(example)
     end
 
-    pos_count = tmp.select{|t| t == "Positive"}.count
+    pos_count = pos_tmp.select{|t| t == "Positive"}.count
     [pos_count, pos_count.to_f/tmp.count.to_f]
   end
 
   def self.negtest
-    tmp = []
+    neg_tmp = []
+    #@neg_corpus.testing_set.each do |example|
     @@neg_test.each do |example| 
-      tmp << @@cls.classify(example)
+      neg_tmp << @@cls.classify(example)
     end
 
-    neg_count = tmp.select{|t| t == "Negative"}.count
+    neg_count = neg_tmp.select{|t| t == "Negative"}.count
     [neg_count, neg_count.to_f/tmp.count.to_f]
   end
 

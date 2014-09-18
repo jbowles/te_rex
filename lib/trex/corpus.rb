@@ -2,7 +2,7 @@ module Trex
   module Corpus
     require 'drb/drb'
     class Body
-    attr_accessor :files, :sample_size, :training, :testing, :drb_server
+    attr_accessor :files, :sample_size, :training_set, :testing_set, :drb_server
 
     def initialize(glob, klass)
       @glob = glob
@@ -11,8 +11,8 @@ module Trex
 
     def build
       get_files
-      @training_sentences = partition_train
-      @testing_sentences = partition_test
+      @training_set = partition_train
+      @testing_set = partition_test
     end
 
     def get_files
