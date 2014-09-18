@@ -26,7 +26,7 @@ class ClassifierTest < MicroTest::Test
     end
 
     pos_count = tmp.select{|t| t == "Positive"}.count
-    pos_count.to_f/tmp.count.to_f
+    [pos_count, pos_count.to_f/tmp.count.to_f]
   end
 
   def self.negtest
@@ -36,22 +36,22 @@ class ClassifierTest < MicroTest::Test
     end
 
     neg_count = tmp.select{|t| t == "Negative"}.count
-    neg_count.to_f/tmp.count.to_f
+    [neg_count, neg_count.to_f/tmp.count.to_f]
   end
 
   setup
 
   test "positive training set should contain at least 60% 'positive' labels" do
-    pos_ratio = ClassifierTest.postest
+    pos_count, pos_ratio = ClassifierTest.postest
     puts "***** POS Trained on #{@@pos_train.count} instances, test on #{@@pos_test.count}, number of Positive categories: #{@@cls.category_counts[:Positive]}"
-    puts "***** Accuracy of Positive classifier: #{pos_ratio}"
+    puts "***** Accuracy of Positive classifier: #{pos_ratio} with #{pos_count} positive labels"
     assert pos_ratio > 0.60
   end
 
   test "negative training set should contain at least 60% 'negative' labels" do
-    neg_ratio = ClassifierTest.negtest
+    neg_count, neg_ratio = ClassifierTest.negtest
     puts "***** NEG Trained on #{@@neg_train.count} instances, test on #{@@neg_test.count} instances, number of Negative categories: #{@@cls.category_counts[:Negative]}"
-    puts "***** Accuracy of Negative classifier: #{neg_ratio}"
+    puts "***** Accuracy of Negative classifier: #{neg_ratio} with #{neg_count} negative labels"
     assert neg_ratio > 0.60
   end
 
