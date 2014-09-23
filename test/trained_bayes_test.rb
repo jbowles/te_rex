@@ -46,7 +46,7 @@ class TrainedBayesTest < MicroTest::Test
 
     refund_s1 = "You will get a full refund and free cancellation"
     partrefund_s1 = "You will get a refund if you cancel or change your reservation before 0201 AM on 01/31/14"
-    norefund_s1 = "You will get a nonrefund"
+    norefund_s1 = "You will get a non-refund"
     unk_s1 = "You will get a nonsense am I writing here."
 
     refund_s11 = @@cls.classify(refund_s1)

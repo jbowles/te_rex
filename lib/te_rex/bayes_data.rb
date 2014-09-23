@@ -40,7 +40,7 @@ module TeRex
         def clean(text)
           dt = date_time(text)
           mt = money_term(dt)
-          rp = remove_punct(mt).gsub(/[^\w\s]/,"")
+          rp = remove_punct(mt) #.gsub(/[^\w\s]/,"")
           remove_cardinal(rp)
         end
 

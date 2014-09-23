@@ -43,6 +43,20 @@ class BayesDataTest < MicroTest::Test
     assert s33 == "You'll make moneyterm on 06-20-2014"
   end
 
+  test "cleaned text does what we want" do
+    s1 = "$140 will be paid on 09/14/2014 with $60"
+    s2 = "I get $20.00 on 2014-05-21 and on 09MAR04 with %49 and &*%^)"
+    s3 = "And I$ have c#des in |his one wi%th 100% refund too@>."
+
+    s11 = TeRex::Classifier::BayesData.clean(s1)
+    s22 = TeRex::Classifier::BayesData.clean(s2)
+    s33 = TeRex::Classifier::BayesData.clean(s3)
+
+    assert s11 == "moneyterm will be paid on datetime with moneyterm"
+    assert s22 == "I get moneyterm on datetime and on datetime with %49 and %"
+    assert s33 == "And I have cdes in his one wi%th % refund too"
+  end
+
   test "index frequency has correct counts" do
     s = "Here is a sentence $141.34 that that $60 that 123.56 I need & & ^ % $c#@ to check the index is correct and okay."
     result = TeRex::Classifier::BayesData.index_frequency(s)
