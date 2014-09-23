@@ -1,15 +1,15 @@
-require_relative "../../lib/trex"
+require_relative "../../lib/te_rex"
 class ClassifierTest < MicroTest::Test
 
   def self.setup
-    @@cls = Trex::Classifier::Bayes.new("Positive", "Negative")
+    @@cls = TeRex::Classifier::Bayes.new("Positive", "Negative")
 
-    @pos_corpus = Trex::Corpus::Body.new("corpora/movie_reviews/pos/cv**", Trex::Format::BasicFile)
+    @pos_corpus = TeRex::Corpus::Body.new("corpora/movie_reviews/pos/cv**", TeRex::Format::BasicFile)
     @pos_corpus.get_files
     @@pos_train = @pos_corpus.partition_train
     @@pos_test = @pos_corpus.partition_test
 
-    @neg_corpus = Trex::Corpus::Body.new("corpora/movie_reviews/neg/cv**", Trex::Format::BasicFile)
+    @neg_corpus = TeRex::Corpus::Body.new("corpora/movie_reviews/neg/cv**", TeRex::Format::BasicFile)
     @neg_corpus.get_files
     @@neg_train = @neg_corpus.partition_train
     @@neg_test = @neg_corpus.partition_test
