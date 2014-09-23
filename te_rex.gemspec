@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require_relative 'lib/te_rex/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "trex"
+  spec.name          = "te_rex"
   spec.version       = TeRex::VERSION
   spec.authors       = ["Joshua Bowles"]
   spec.email         = ["jbowayles@gmail.com"]
