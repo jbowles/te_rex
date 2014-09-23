@@ -1,4 +1,3 @@
-# coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
@@ -18,7 +17,6 @@ Gem::Specification.new do |spec|
   spec.test_files    = Dir["test/**/*.rb"]
   spec.require_paths = ["lib"]
 
-  #spec.add_dependency "active_support", "~> 4.1.6"
   spec.add_dependency "fast-stemmer", "~> 1.0", ">= 1.0.2"
 
   spec.add_development_dependency "bundler", "~> 1.5", ">= 1.5.3"

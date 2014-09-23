@@ -1,9 +1,8 @@
 .DS_Store
 *.swp
 *.swo
-lib/train/*.rb
 corpora/brown/*
-corpora/movie/positive/*
-corpora/movie/negative/*
+corpora/movie_reviews/pos/*
+corpora/movie_reviews/neg/*
 corpora/4uds/*
 corpora/20news-18828/*
