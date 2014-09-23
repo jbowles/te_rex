@@ -28,19 +28,17 @@ module TeRex
         # Return a Hashed Index of words => instance_count. 
         # Each word in the string is interned and shows count in the document.
         def index_frequency(text)
-          #naive_index(text.split)
-          #clean_filtered_index(text)
-          #clean_stemmed_filtered_index(text)
           cfi = clean_stemmed_filtered_index(text)
           cni = clean_filtered_index(text)
           cfi.merge(cni)
         end
 
-        # Return text with datetime and moneyterms replaced, remove cardinal terms (1st, 23rd, 42nd), remove punctuation and any non-word chars without spaces (/[^\w\s]/)
+        # Return text with datetime and moneyterms replaced, remove cardinal terms (1st, 23rd, 42nd), remove punctuation.
+        # At one point we were replacing any non-word chars exlcuding spaces (/[^\w\s]/) like so `gsub(/[^\w\s]/, "")` but I took it out as it removed some punctuation needed to distinguish some classes.
         def clean(text)
           dt = date_time(text)
           mt = money_term(dt)
-          rp = remove_punct(mt) #.gsub(/[^\w\s]/,"")
+          rp = remove_punct(mt)
           remove_cardinal(rp)
         end
 
