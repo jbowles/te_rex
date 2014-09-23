@@ -1,4 +1,4 @@
-module Trex
+module TeRex
   module Train
     NONREFUND = [
       "This reservation is non-refundable. Cancellations or changes made at any time are subject to a 100% charge.",

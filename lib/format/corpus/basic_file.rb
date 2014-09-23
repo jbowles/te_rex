@@ -1,4 +1,4 @@
-module Trex
+module TeRex
   module Format
     class BasicFile
 

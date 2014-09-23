@@ -1,8 +1,7 @@
 #
-# Refactor of Lucas Carlson's classifier (Copyright (c) 2005 lucas@rufy.com)
+# Refactor of Lucas Carlson's classifier https://github.com/cardmagic/classifier (Copyright (c) 2005 lucas@rufy.com)
 #
-
-module Trex
+module TeRex
   module Classifier
     class Bayes
 
@@ -10,13 +9,13 @@ module Trex
 
       def initialize(*categories)
         @clasif = Hash.new 
-        categories.each {|cat| @clasif[Trex::Format.category_term(cat)] = Hash.new}
+        categories.each {|cat| @clasif[TeRex::Format.category_term(cat)] = Hash.new}
         @total_words = 0
         @category_counts = Hash.new(0)
       end
 
       def train(ctgry, text)
-        category = Trex::Format.category_term(ctgry)
+        category = TeRex::Format.category_term(ctgry)
         @category_counts[category] += 1
 
         BayesData.index_frequency(text).each do |word, count| 

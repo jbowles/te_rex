@@ -1,6 +1,6 @@
 require 'fast_stemmer'
 
-module Trex
+module TeRex
   module Classifier
     class BayesData
       class << self
@@ -65,7 +65,7 @@ module Trex
           idx = Hash.new(0)
           word_array.each do |word|
             word.downcase!
-            if !Trex::StopWord::LIST.include?(word) #&& word.length > 2
+            if !TeRex::StopWord::LIST.include?(word) #&& word.length > 2
               idx[word.stem.intern] += 1
             end
           end
@@ -78,7 +78,7 @@ module Trex
           idx = Hash.new(0)
           word_array.each do |word|
             word.downcase!
-            if !Trex::StopWord::LIST.include?(word) #&& word.length > 2
+            if !TeRex::StopWord::LIST.include?(word) #&& word.length > 2
               idx[word.intern] += 1
             end
           end

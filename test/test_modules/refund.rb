@@ -1,4 +1,4 @@
-module Trex
+module TeRex
   module Train
     REFUND = [
       "Free cancellation before 1201 AM on 9/17/14! If you cancel or change your reservation after 1201 AM on 9/17/14 the hotel will charge you for the total cost of your reservation. ",

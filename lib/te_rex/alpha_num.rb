@@ -1,5 +1,5 @@
 # This module generates an alphabet of alpha-numeric characters for use in generating fake data.
-module Trex
+module TeRex
   module AlphaNum
     @symbols = ['!','@','#','$','%','^','&','*','(',')','-','+','=','<','>','?','~']
     def self.gen

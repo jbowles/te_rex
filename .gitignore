@@ -6,3 +6,4 @@ corpora/movie_reviews/pos/*
 corpora/movie_reviews/neg/*
 corpora/4uds/*
 corpora/20news-18828/*
+*.gem
