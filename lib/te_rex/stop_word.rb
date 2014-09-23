@@ -1,4 +1,4 @@
-module Trex
+module TeRex
   class StopWord
     LIST = [
       "a",

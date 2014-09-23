@@ -1,5 +1,6 @@
-# T-rex
-Alot of heft with a little reach.
+# TeRex
+Alot of power with a little reach.
+A little reach with a big bite.
 
 The Bayes classifier is written to solve some small domain sepcific problems. This means it is not a classififer to be used for general problems.
 
@@ -14,7 +15,7 @@ The the small domain focus of this classifier can most be gleaned from the `Baye
 ### Corpus builder
 
 ```rb
-pos_corpus = Trex::Corpus::Body.new('~/training_data/corpora/movie/positive/cv**', Trex::Format::BasicFile)
+pos_corpus = TeRex::Corpus::Body.new('~/training_data/corpora/movie/positive/cv**', TeRex::Format::BasicFile)
 pos_corpus.build
 
 # Then look at what you've got:
@@ -32,7 +33,7 @@ pos_test = pos_corpus.partition_test
 
 
 ## Stopwords
-A class provided so you can append or delete from it if needed.
+A class provided so you can append or delete from it if needed. I typically go for smaller stop lists than larger and this one is no exception. However, due the custom nature of this classifier the stop list also contains weekday and month names with usual abbreviations (i.e., nov, november, wed, monday,...).
 
 
 ## Corpora

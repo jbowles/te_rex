@@ -1,4 +1,4 @@
-module Trex
+module TeRex
   module Corpus
     class Body
 

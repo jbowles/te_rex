@@ -1,4 +1,4 @@
-module Trex
+module TeRex
   module Train
     UNKNOWN = [
       "The cancellation policy will be determined when the rate is validated.",

@@ -1,4 +1,4 @@
-require_relative "../lib/trex"
+require_relative "../lib/te_rex"
 class SparseBayesTest < MicroTest::Test
   @@refund = [
     "Free cancellation before 1201 AM on 9/17/14! If you cancel or change your reservation after 1201 AM on 9/17/14 the hotel will charge you for the total cost of your reservation.",
@@ -23,7 +23,7 @@ class SparseBayesTest < MicroTest::Test
     "unknown"
   ]
 
-  @@cls = Trex::Classifier::Bayes.new("Refund", "Partrefund", "Nonrefund", "Unknown")
+  @@cls = TeRex::Classifier::Bayes.new("Refund", "Partrefund", "Nonrefund", "Unknown")
   @@refund.each {|txt| @@cls.train("Refund", txt) }
   @@partrefund.each {|txt| @@cls.train("Partrefund", txt) }
   @@norefund.each {|txt| @@cls.train("Nonrefund", txt) }

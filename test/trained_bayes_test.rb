@@ -1,14 +1,14 @@
-require_relative "../lib/trex"
+require_relative "../lib/te_rex"
 class TrainedBayesTest < MicroTest::Test
 
   #Dir["#{File.dirname(__FILE__)}/test_modules/**/*.rb"].each { |f| load(f) if !!(f =~ /^[^\.].+\.rb/)}
 
-  @@refund = Trex::Train::REFUND
-  @@partrefund = Trex::Train::PARTREFUND
-  @@norefund = Trex::Train::NONREFUND
-  @@unknown = Trex::Train::UNKNOWN
+  @@refund = TeRex::Train::REFUND
+  @@partrefund = TeRex::Train::PARTREFUND
+  @@norefund = TeRex::Train::NONREFUND
+  @@unknown = TeRex::Train::UNKNOWN
 
-  @@cls = Trex::Classifier::Bayes.new("Refund", "Partrefund", "Nonrefund", "Unknown")
+  @@cls = TeRex::Classifier::Bayes.new("Refund", "Partrefund", "Nonrefund", "Unknown")
   @@refund.each {|txt| @@cls.train("Refund", txt) }
   @@partrefund.each {|txt| @@cls.train("Partrefund", txt) }
   @@norefund.each {|txt| @@cls.train("Nonrefund", txt) }
