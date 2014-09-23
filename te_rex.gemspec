@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["jbowayles@gmail.com"]
   spec.description   = "Simple text processing for small data sets."
   spec.summary       = "Basic NLP stuff for small data sets. Naive Bayes classification and corpora loading."
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/jbowles/te_rex"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*.rb"]
