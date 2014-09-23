@@ -1,18 +1,18 @@
 require_relative "../lib/trex"
 class BayesDataTest < MicroTest::Test
 
-  test "punctuation is removed" do
+  test "punctuation is removed (except %)" do
     s1 = "This * punctuation se%ntence ).!"
     s2 = "Much $ in @ this } [ sentence too?"
-    s3 = "And I$ have c#des in |his one too@>."
+    s3 = "And I$ have c#des in |his one with 100% refund too@>."
 
     s11 = Trex::Classifier::BayesData.remove_punct(s1)
     s22 = Trex::Classifier::BayesData.remove_punct(s2)
     s33 = Trex::Classifier::BayesData.remove_punct(s3)
 
-    assert s11 == "This  punctuation sentence "
+    assert s11 == "This  punctuation se%ntence "
     assert s22 == "Much  in  this   sentence too"
-    assert s33 == "And I have cdes in his one too"
+    assert s33 == "And I have cdes in his one with 100% refund too"
   end
 
   test "datetime is removed and replaced" do
