@@ -17,7 +17,7 @@ module TeRex
 
         # Replace date times with TERM (09MAR04, 02-23-14, 2014/03/05)
         def date_time(s)
-          s.gsub(/(^\d+)|(\s\d+(AM|PM))|(\d{2}\w{3}\d{2})|(\d{2}\:\d{2})|(\d{2,4}\-\d{2,4}-\d{2,4})|(\d{1,3}\/\d{2,4}\/\d{2,4})|(\d+\:\d+)/, 'datetime')
+          s.gsub(/(^\d+)|(\s\d+(AM|PM))|(\d{2}\w{3}\d{2})|(\d{2}\:\d{2})|(\d{2,4}\-\d{2,4}-\d{2,4})|(\d{1,4}\/\d{2,4}\/\d{2,4})|(\d+\:\d+)/, 'datetime')
         end
 
         # Replace money types with TERM ($60, 120.00, $423.89)

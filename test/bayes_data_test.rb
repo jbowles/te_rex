@@ -17,7 +17,7 @@ class BayesDataTest < MicroTest::Test
 
   test "datetime is removed and replaced" do
     s1 = "This $140 will be paid on 09/14/2014"
-    s2 = "I get $20.00 on 2014-05-21 and on 09MAR04"
+    s2 = "At on 2015/09/08 get $20.00 on 2014-05-21 and on 09MAR04"
     s3 = "I'll pay you $60.21 on 06-20-2014"
 
     s11 = TeRex::Classifier::BayesData.date_time(s1)
@@ -25,7 +25,7 @@ class BayesDataTest < MicroTest::Test
     s33 = TeRex::Classifier::BayesData.date_time(s3)
 
     assert s11 == "This $140 will be paid on datetime"
-    assert s22 == "I get $20.00 on datetime and on datetime"
+    assert s22 == "At on datetime get $20.00 on datetime and on datetime"
     assert s33 == "I'll pay you $60.21 on datetime"
   end
 
