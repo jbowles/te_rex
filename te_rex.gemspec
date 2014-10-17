@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require_relative 'lib/te_rex/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "trex"
+  spec.name          = "te_rex"
   spec.version       = TeRex::VERSION
   spec.authors       = ["Joshua Bowles"]
   spec.email         = ["jbowayles@gmail.com"]
   spec.description   = "Simple text processing for small data sets."
   spec.summary       = "Basic NLP stuff for small data sets. Naive Bayes classification and corpora loading."
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/jbowles/te_rex"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*.rb"]

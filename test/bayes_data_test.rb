@@ -17,7 +17,7 @@ class BayesDataTest < MicroTest::Test
 
   test "datetime is removed and replaced" do
     s1 = "This $140 will be paid on 09/14/2014"
-    s2 = "I get $20.00 on 2014-05-21 and on 09MAR04"
+    s2 = "At on 2015/09/08 get $20.00 on 2014-05-21 and on 09MAR04"
     s3 = "I'll pay you $60.21 on 06-20-2014"
 
     s11 = TeRex::Classifier::BayesData.date_time(s1)
@@ -25,7 +25,7 @@ class BayesDataTest < MicroTest::Test
     s33 = TeRex::Classifier::BayesData.date_time(s3)
 
     assert s11 == "This $140 will be paid on datetime"
-    assert s22 == "I get $20.00 on datetime and on datetime"
+    assert s22 == "At on datetime get $20.00 on datetime and on datetime"
     assert s33 == "I'll pay you $60.21 on datetime"
   end
 
@@ -41,6 +41,20 @@ class BayesDataTest < MicroTest::Test
     assert s11 == "moneyterm will be paid on 09/14/2014 with moneyterm"
     assert s22 == "I get moneyterm on 2014-05-21 and on 09MAR04"
     assert s33 == "You'll make moneyterm on 06-20-2014"
+  end
+
+  test "cleaned text does what we want" do
+    s1 = "$140 will be paid on 09/14/2014 with $60"
+    s2 = "I get $20.00 on 2014-05-21 and on 09MAR04 with %49 and &*%^)"
+    s3 = "And I$ have c#des in |his one wi%th 100% refund too@>."
+
+    s11 = TeRex::Classifier::BayesData.clean(s1)
+    s22 = TeRex::Classifier::BayesData.clean(s2)
+    s33 = TeRex::Classifier::BayesData.clean(s3)
+
+    assert s11 == "moneyterm will be paid on datetime with moneyterm"
+    assert s22 == "I get moneyterm on datetime and on datetime with %49 and %"
+    assert s33 == "And I have cdes in his one wi%th % refund too"
   end
 
   test "index frequency has correct counts" do

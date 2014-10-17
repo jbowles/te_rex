@@ -26,14 +26,16 @@ class TrainedBayesTest < MicroTest::Test
     s_non1 = @@cls.classify(s_non)
     s_unk1= @@cls.classify(s_unk)
 
-    # We are lenient on Refund || Partrefund because of the non-distinctness of the two.
+    # We are lenient on Partrefund || Refund but we still want to see when it fails
     assert s_refund1 == "Refund" || "Partrefund"
+    # We are lenient on Refund || Partrefund because of the non-distinctness of the two.
     assert s_partial1 == "Partrefund" || "Refund"
     assert s_non1 == "Nonrefund"
     assert s_unk1 == "Unknown"
 
-    # We are lenient on Refund || Partrefund but we still want to see when it fails
+    # We are lenient on Partrefund || Refund but we still want to see when it fails
     assert s_refund1 != "Partrefund"
+    # We are lenient on Refund || Partrefund but we still want to see when it fails
     assert s_partial1 != "Refund"
     assert s_non1 != "Unknown"
     assert s_unk1 != "Nonrefund"
@@ -44,7 +46,7 @@ class TrainedBayesTest < MicroTest::Test
 
     refund_s1 = "You will get a full refund and free cancellation"
     partrefund_s1 = "You will get a refund if you cancel or change your reservation before 0201 AM on 01/31/14"
-    norefund_s1 = "You will get a nonrefund"
+    norefund_s1 = "You will get a non-refund"
     unk_s1 = "You will get a nonsense am I writing here."
 
     refund_s11 = @@cls.classify(refund_s1)

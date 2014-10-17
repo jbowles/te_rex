@@ -2,6 +2,8 @@
 This branch is for testing large data sets. Merge master into it and run tests containing corpora and other large data sets.
 =======
 # TeRex
+[![te_rex API Documentation](https://www.omniref.com/ruby/gems/te_rex.png)](https://www.omniref.com/ruby/gems/te_rex)
+
 Alot of power with a little reach.
 A little reach with a big bite.
 

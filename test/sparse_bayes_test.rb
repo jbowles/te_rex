@@ -19,8 +19,7 @@ class SparseBayesTest < MicroTest::Test
   ]
 
   @@unknown = [
-    "The cancellation policy will be determined when the rate is validated.",
-    "unknown"
+    "The cancellation policy will be determined when the rate is validated."
   ]
 
   @@cls = TeRex::Classifier::Bayes.new("Refund", "Partrefund", "Nonrefund", "Unknown")
@@ -75,7 +74,7 @@ class SparseBayesTest < MicroTest::Test
 
     s1 = "Free cancellation before"
     s2 = "If you cancel or change your reservation before"
-    s3 = "nonrefund"
+    s3 = "non-refund"
     s4 = "policy rate validated."
 
     s11 = @@cls.classify(s1)
