@@ -1,4 +1,6 @@
 # TeRex
+[![te_rex API Documentation](https://www.omniref.com/ruby/gems/te_rex.png)](https://www.omniref.com/ruby/gems/te_rex)
+
 Alot of power with a little reach.
 A little reach with a big bite.
 
