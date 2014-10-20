@@ -59,7 +59,7 @@ module TeRex
         @clasif.each_pair do |term,val|
           cc = self.category_counts[term]
           train_ratio = (@total_words/cc).to_f
-          tmp << [(train_ratio > max_threshold), term, "description" => {"training_ratio" => "#{train_ratio}", "threshold" => "#{max_threshold}", "category_counts" => "#{cc}", "total_words" => "#{@total_words}"}]
+          tmp << [(train_ratio >= max_threshold), term, "description" => {"training_ratio" => "#{train_ratio}", "threshold" => "#{max_threshold}", "category_counts" => "#{cc}", "total_words" => "#{@total_words}"}]
         end
         tmp
       end
