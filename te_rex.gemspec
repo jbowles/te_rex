@@ -1,13 +1,3 @@
-require 'simplecov'
-SimpleCov.command_name 'mt'
-
-SimpleCov.start  do
-  add_filter 'test/test_modules'
-
-  #add_group 'Formatter', 'lib/format'
-  #add_group 'Core', 'lib/te_rex'
-end
-
 require_relative 'lib/te_rex/version'
 
 Gem::Specification.new do |spec|
