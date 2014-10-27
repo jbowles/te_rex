@@ -1,5 +1,12 @@
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'simplecov'
+SimpleCov.command_name 'mt'
+
+SimpleCov.start  do
+  add_filter 'test/test_modules'
+
+  #add_group 'Formatter', 'lib/format'
+  #add_group 'Core', 'lib/te_rex'
+end
 
 require_relative 'lib/te_rex/version'
 
@@ -23,7 +30,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.3", ">= 10.3.2"
   spec.add_development_dependency "micro_test", "~> 0.4", ">= 0.4.4"
   spec.add_development_dependency "pry", "~> 0.10", ">= 0.10.1"
-  spec.add_development_dependency "pry-debugger", "~> 0.2", ">= 0.2.3"
+  #spec.add_development_dependency "pry-debugger", "~> 0.2", ">= 0.2.3"
   spec.add_development_dependency "pry-rescue", "~> 1.4", ">= 1.4.1"
   spec.add_development_dependency "pry-stack_explorer", "~> 0.4", ">= 0.4.9.1"
+  spec.add_development_dependency "simplecov"
 end
