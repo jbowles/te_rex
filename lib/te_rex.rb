@@ -1,3 +1,10 @@
+require 'simplecov'
+SimpleCov.command_name 'mt'
+
+SimpleCov.start  do
+  add_filter 'test/test_modules'
+end
+
 require_relative "format/format"
 require_relative "format/corpus/brown_file"
 require_relative "format/corpus/basic_file"

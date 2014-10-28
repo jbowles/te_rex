@@ -4,23 +4,35 @@ This branch is for testing large data sets. Merge master into it and run tests c
 # TeRex
 [![te_rex API Documentation](https://www.omniref.com/ruby/gems/te_rex.png)](https://www.omniref.com/ruby/gems/te_rex)
 
-Alot of power with a little reach.
+A lot of power with a little reach.
 A little reach with a big bite.
 
+The Bayes classifier is written to solve some small domain specific problems. This means it is not a classififer to be used for general problems where domain context is either unknown, general, or requires large data sets. In other words, you shouldn't use this gem.
 
-## Run tests
-Using `micro_test` for testing. larger data set testing in `test/large_data_set_test`
-
-```sh
-  #run tests
-  mt
-```
 ## Bayes
-This Bayes classifier was written specifically to classify `cancellation policies` and `error messages` from Hotel reservation providers. This doesn't mean it can't be used for other things, but it **does mean it should be used a general solution for anything.**
+This Bayes classifier was written specifically to classify `cancellation policies` and `error messages` from Hotel reservation providers. This doesn't mean it can't be used for other things, but it **does mean it should NOT be used a general solution for text classification.**
 
 The the small domain focus of this classifier can most be gleaned from the `BayesData` class. It cleans the text in way specific to the goals I had in mind.
 
+## Tests
+Just run `mt` [micro\_test](https://github.com/hopsoft/micro_test). For tests against some pre-built larger corpora, which I consider the full test suite, you'll want to switch to the `testing` branch... then run the tests just as you would here in master: `mt`.
+
+## Usage
+For usage see tests; though here is a snippet below. Also, if you don't know what Bayesian Classification is you should probably check it out (just google it): your classifier is only as good as your training data and training methods!
+
+```ruby
+cls = TeRex::Classifier::Bayes.new("Refund", "Nonrefund")
+["You will get a refund.","Full refund for you!","You will receive a full refund.","You may only get a partial refund."].each {|txt| cls.train("Refund", txt)}
+["You will not get a refund.","There are no refunds.","Refunds not available.","You will not get a refund."].each {|txt| cls.train("Nonrefund", txt)}
+
+
+cls.classify("We understand that you work hard for your money, but we will not give you a refund.")
+```
+
+
 ## Examples
+The corpus builder is mostly used to test the classification on a larger data sets. I need to verify the classifier actually works to some degree and so running it against some well known corpora and comparing resutls with other classifiers provides feedback on `te_rex`. 
+
 ### Corpus builder
 
 ```rb
@@ -39,7 +51,6 @@ pos_corpus.get_files
 pos_train = pos_corpus.partition_train
 pos_test = pos_corpus.partition_test
 ```
-
 
 ## Stopwords
 A class provided so you can append or delete from it if needed. I typically go for smaller stop lists than larger and this one is no exception. However, due the custom nature of this classifier the stop list also contains weekday and month names with usual abbreviations (i.e., nov, november, wed, monday,...).
