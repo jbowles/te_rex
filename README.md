@@ -1,15 +1,15 @@
 # TeRex
 [![te_rex API Documentation](https://www.omniref.com/ruby/gems/te_rex.png)](https://www.omniref.com/ruby/gems/te_rex)
 
-Alot of power with a little reach.
+A lot of power with a little reach.
 A little reach with a big bite.
 
-The Bayes classifier is written to solve some small domain sepcific problems. This means it is not a classififer to be used for general problems.
+The Bayes classifier is written to solve some small domain specific problems. This means it is not a classififer to be used for general problems where domain context is either unknown, general, or requires large data sets. In other words, you shouldn't use this gem.
 
 Using Bayesian analysis because I wanted something that worked pretty good, was easy to implement, had a ruby runtime, and most importantly DID NOT REQUIRE VECTOR/MATRIX MULTIPLICATION (-- mostly because i don't want to introduce dependency on ruby C extensions for matrix multiplication, probably the GNU Scientific Library; though I am using `fast-stemmer`, which is a C extension.)
 
 ## Bayes
-This Bayes classifier was written specifically to classify `cancellation policies` and `error messages` from Hotel reservation providers. This doesn't mean it can't be used for other things, but it **does mean it should be used a general solution for anything.**
+This Bayes classifier was written specifically to classify `cancellation policies` and `error messages` from Hotel reservation providers. This doesn't mean it can't be used for other things, but it **does mean it should NOT be used a general solution for text classification.**
 
 The the small domain focus of this classifier can most be gleaned from the `BayesData` class. It cleans the text in way specific to the goals I had in mind.
 
