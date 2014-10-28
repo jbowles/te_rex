@@ -1,6 +1,7 @@
 .DS_Store
 *.swp
 *.swo
+coverage/*
 corpora/brown/*
 corpora/movie_reviews/pos/*
 corpora/movie_reviews/neg/*
