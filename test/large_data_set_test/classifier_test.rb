@@ -2,7 +2,10 @@ require_relative "../../lib/te_rex"
 class ClassifierTest < MicroTest::Test
 
   def self.setup
-    @@cls = TeRex::Classifier::Bayes.new("Positive", "Negative")
+    @@cls = TeRex::Classifier::Bayes.new(
+      {:tag => "Positive", :msg => "Much Smiles"},
+      {:tag => "Negative", :msg => "Such Negative"}
+    )
 
     @pos_corpus = TeRex::Corpus::Body.new("corpora/movie_reviews/pos/cv**", TeRex::Format::BasicFile)
     @pos_corpus.get_files
@@ -25,7 +28,7 @@ class ClassifierTest < MicroTest::Test
       tmp << @@cls.classify(example)
     end
 
-    pos_count = tmp.select{|t| t == "Positive"}.count
+    pos_count = tmp.select{|t| t[0] == "Positive"}.count
     pos_count.to_f/tmp.count.to_f
   end
 
@@ -35,7 +38,7 @@ class ClassifierTest < MicroTest::Test
       tmp << @@cls.classify(example)
     end
 
-    neg_count = tmp.select{|t| t == "Negative"}.count
+    neg_count = tmp.select{|t| t[0] == "Negative"}.count
     neg_count.to_f/tmp.count.to_f
   end
 
