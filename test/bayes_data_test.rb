@@ -58,7 +58,7 @@ class BayesDataTest < MicroTest::Test
   end
 
   test "index frequency has correct counts" do
-    s = "Here is a sentence $141.34 that that $60 that 123.56 I need & & ^ % $c#@ to check the index is correct and okay."
+    s = 'Here is a sentence $141.34 that that $60 that 123.56 I need & & ^ % $c#@ to check the index is correct and okay.'
     result = TeRex::Classifier::BayesData.index_frequency(s)
 
     assert result[:moneyterm] == 3
