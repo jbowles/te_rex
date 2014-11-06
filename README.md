@@ -20,7 +20,11 @@ Just run `mt` [micro\_test](https://github.com/hopsoft/micro_test). For tests ag
 For usage see tests; though here is a snippet below. Also, if you don't know what Bayesian Classification is you should probably check it out (just google it): your classifier is only as good as your training data and training methods!
 
 ```ruby
-cls = TeRex::Classifier::Bayes.new("Refund", "Nonrefund")
+cls = TeRex::Classifier::Bayes.new(
+  {:tag => "Refund", :msg => "You'll get a refund"},
+  {:tag => "Nonrefund", :msg => "You won't get a refund"}
+)
+
 ["You will get a refund.","Full refund for you!","You will receive a full refund.","You may only get a partial refund."].each {|txt| cls.train("Refund", txt)}
 ["You will not get a refund.","There are no refunds.","Refunds not available.","You will not get a refund."].each {|txt| cls.train("Nonrefund", txt)}
 
