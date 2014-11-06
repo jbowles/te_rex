@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    te_rex (0.0.10)
+    te_rex (0.0.8)
       fast-stemmer (~> 1.0, >= 1.0.2)
 
 GEM
@@ -11,13 +11,11 @@ GEM
       debug_inspector (>= 0.0.1)
     coderay (1.1.0)
     debug_inspector (0.0.2)
-    docile (1.1.5)
     fast-stemmer (1.0.2)
     interception (0.5)
     method_source (0.8.2)
     micro_test (0.4.4)
       os
-    multi_json (1.10.1)
     os (0.9.6)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -30,11 +28,6 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     rake (10.3.2)
-    simplecov (0.9.1)
-      docile (~> 1.1.0)
-      multi_json (~> 1.0)
-      simplecov-html (~> 0.8.0)
-    simplecov-html (0.8.0)
     slop (3.6.0)
 
 PLATFORMS
@@ -47,5 +40,4 @@ DEPENDENCIES
   pry-rescue (~> 1.4, >= 1.4.1)
   pry-stack_explorer (~> 0.4, >= 0.4.9.1)
   rake (~> 10.3, >= 10.3.2)
-  simplecov
   te_rex!
