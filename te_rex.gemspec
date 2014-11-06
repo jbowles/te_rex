@@ -4,7 +4,7 @@ require './lib/te_rex/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "te_rex"
-  spec.version       = "0.0.8"
+  spec.version       = TeRex::VERSION
   spec.authors       = ["Joshua Bowles"]
   spec.email         = ["jbowayles@gmail.com"]
   spec.description   = "Simple text processing for small data sets."
