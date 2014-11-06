@@ -32,18 +32,18 @@ class TrainedBayesTest < MicroTest::Test
     s_unk1= @@cls.classify(s_unk)
 
     # We are lenient on Partrefund || Refund but we still want to see when it fails
-    assert s_refund1 == "Refund" || "Partrefund"
+    assert s_refund1 == ["Refund", "We are pleased to offer you a refund"] || ["Partrefund", "You may receive a partial refund"]
     # We are lenient on Refund || Partrefund because of the non-distinctness of the two.
-    assert s_partial1 == "Partrefund" || "Refund"
-    assert s_non1 == "Nonrefund"
-    assert s_unk1 == "Unknown"
+    assert s_partial1 == ["Partrefund", "You may receive a partial refund"] || ["Refund", "We are pleased to offer you a refund"]
+    assert s_non1 == ["Nonrefund", "Much apologies, no refund to you"]
+    assert s_unk1 == ["Unknown", "Waht?"]
 
     # We are lenient on Partrefund || Refund but we still want to see when it fails
-    assert s_refund1 != "Partrefund"
+    assert s_refund1 != ["Partrefund", "You may receive a partial refund"]
     # We are lenient on Refund || Partrefund but we still want to see when it fails
-    assert s_partial1 != "Refund"
-    assert s_non1 != "Unknown"
-    assert s_unk1 != "Nonrefund"
+    assert s_partial1 != ["Refund", "We are pleased to offer you a refund"]
+    assert s_non1 != ["Unknown", "Waht?"]
+    assert s_unk1 != ["Nonrefund", "Much apologies, no refund to you"]
   end
 
 
@@ -59,10 +59,10 @@ class TrainedBayesTest < MicroTest::Test
     norefund_s11 = @@cls.classify(norefund_s1)
     unk_s11 = @@cls.classify(unk_s1)
 
-    assert refund_s11 == "Refund"
-    assert partrefund_s11 == "Partrefund"
-    assert norefund_s11 == "Nonrefund"
-    assert unk_s11 == "Unknown"
+    assert refund_s11 == ["Refund", "We are pleased to offer you a refund"]
+    assert partrefund_s11 == ["Partrefund", "You may receive a partial refund"]
+    assert norefund_s11 == ["Nonrefund", "Much apologies, no refund to you"]
+    assert unk_s11 == ["Unknown", "Waht?"]
   end
 
   test "Training Data Set Test: Micro examples should return correct classification" do
@@ -77,15 +77,15 @@ class TrainedBayesTest < MicroTest::Test
     s33 = @@cls.classify(s3)
     s44 = @@cls.classify(s4)
 
-    assert s11 == "Refund"
-    assert s22 == "Partrefund"
-    assert s33 == "Nonrefund"
-    assert s44 == "Unknown"
+    assert s11 == ["Refund", "We are pleased to offer you a refund"]
+    assert s22 == ["Partrefund", "You may receive a partial refund"]
+    assert s33 == ["Nonrefund", "Much apologies, no refund to you"]
+    assert s44 == ["Unknown", "Waht?"]
 
-    assert s11 != "Partrefund"
-    assert s22 != "Refund"
-    assert s33 != "Unknown"
-    assert s44 != "Nonrefund"
+    assert s11 != ["Partrefund", "You may receive a partial refund"]
+    assert s22 != ["Nonrefund", "Much apologies, no refund to you"]
+    assert s33 != ["Unknown", "Waht?"]
+    assert s44 != ["Refund", "We are pleased to offer you a refund"]
   end
 
   test "Training Data Set Test: Micro examples should NOT match fake classes" do
@@ -100,10 +100,10 @@ class TrainedBayesTest < MicroTest::Test
     s33 = @@cls.classify(s3)
     s44 = @@cls.classify(s4)
 
-    assert s11 != "Computers"
-    assert s22 != "Science"
-    assert s33 != "Entertainment"
-    assert s44 != "Sports"
+    assert s11 != ["Computers", "computers yay!"]
+    assert s22 != ["Science", "science yay!"]
+    assert s33 != ["Entertainment", "entertainment yay!"]
+    assert s44 != ["Sports", "sports yay!"]
   end
 
   test "Training Data Set Test: Ambiguous examples should return 'Unknown'" do
@@ -118,10 +118,10 @@ class TrainedBayesTest < MicroTest::Test
     s33 = @@cls.classify(s3)
     s44 = @@cls.classify(s4)
 
-    assert s11 == "Unknown"
-    assert s22 == "Unknown"
-    assert s33 == "Unknown"
-    assert s44 == "Unknown"
+    assert s11 == ["Unknown", "Waht?"]
+    assert s22 == ["Unknown", "Waht?"] 
+    assert s33 == ["Unknown", "Waht?"]
+    assert s44 == ["Unknown", "Waht?"]
   end
 
   test "Training Data Set Test: Category counts are equivalent with number of training data per class" do

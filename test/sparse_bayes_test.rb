@@ -45,15 +45,15 @@ class SparseBayesTest < MicroTest::Test
     s_non1 = @@cls.classify(s_non)
     s_unk1= @@cls.classify(s_unk)
 
-    assert s_refund1 == "Refund"
-    assert s_partial1 == "Partrefund"
-    assert s_non1 == "Nonrefund"
-    assert s_unk1 == "Unknown"
+    assert s_refund1 == ["Refund", "We are pleased to offer you a refund"]
+    assert s_partial1 == ["Partrefund", "You may receive a partial refund"]
+    assert s_non1 == ["Nonrefund", "Much apologies, no refund to you"]
+    assert s_unk1 == ["Unknown", "Waht?"]
 
-    assert s_refund1 != "Partrefund"
-    assert s_partial1 != "Refund"
-    assert s_non1 != "Unknown"
-    assert s_unk1 != "Nonrefund"
+    assert s_refund1 != ["Partrefund", "You may receive a partial refund"]
+    assert s_partial1 != ["Refund", "We are pleased to offer you a refund"]
+    assert s_non1 != ["Unknown", "Waht?"]
+    assert s_unk1 != ["Nonrefund", "Much apologies, no refund to you"]
   end
 
 
@@ -69,10 +69,10 @@ class SparseBayesTest < MicroTest::Test
     s33 = @@cls.classify(s3)
     s44 = @@cls.classify(s4)
 
-    assert s11 == "Unknown"
-    assert s22 == "Unknown"
-    assert s33 == "Unknown"
-    assert s44 == "Unknown"
+    assert s11 == ["Unknown", "Waht?"]
+    assert s22 == ["Unknown", "Waht?"]
+    assert s33 == ["Unknown", "Waht?"]
+    assert s44 == ["Unknown", "Waht?"]
   end
 
   test "Sparse Data Set Test: Micro examples should return correct classification" do
@@ -87,15 +87,15 @@ class SparseBayesTest < MicroTest::Test
     s33 = @@cls.classify(s3)
     s44 = @@cls.classify(s4)
 
-    assert s11 == "Refund"
-    assert s22 == "Partrefund"
-    assert s33 == "Nonrefund"
-    assert s44 == "Unknown"
+    assert s11 == ["Refund", "We are pleased to offer you a refund"]
+    assert s22 == ["Partrefund","You may receive a partial refund"]
+    assert s33 == ["Nonrefund", "Much apologies, no refund to you"]
+    assert s44 == ["Unknown", "Waht?"]
 
-    assert s11 != "Partrefund"
-    assert s22 != "Refund"
-    assert s33 != "Unknown"
-    assert s44 != "Nonrefund"
+    assert s11 != ["Partrefund", "You may receive a partial refund"]
+    assert s22 != ["Refund", "We are pleased to offer you a refund"]
+    assert s33 != ["Unknown", "Waht?"]
+    assert s44 != ["Nonrefund", "Much apologies, no refund to you"]
   end
 
 
@@ -111,18 +111,18 @@ test "Sparse Data Set Test: Micro examples should NOT match fake classes" do
     s33 = @@cls.classify(s3)
     s44 = @@cls.classify(s4)
 
-    assert s11 != "Computers"
-    assert s22 != "Science"
-    assert s33 != "Entertainment"
-    assert s44 != "Sports"
+    assert s11 != ["Computers", "computers yay!"]
+    assert s22 != ["Science", "science yay!"]
+    assert s33 != ["Entertainment", "entertainment yay!"]
+    assert s44 != ["Sports", "sports yay!"]
   end
 
 test "Sparse Data Set Test: Category counts are equivalent with number of training data per class" do
 
-    assert @@cls.category_counts[:Refund] == @@refund.count 
-    assert @@cls.category_counts[:Partrefund] == @@partrefund.count 
-    assert @@cls.category_counts[:Nonrefund] == @@norefund.count 
-    assert @@cls.category_counts[:Unknown] == @@unknown.count 
+    assert @@cls.category_counts[:Refund] == @@refund.count
+    assert @@cls.category_counts[:Partrefund] == @@partrefund.count
+    assert @@cls.category_counts[:Nonrefund] == @@norefund.count
+    assert @@cls.category_counts[:Unknown] == @@unknown.count
 
 end
 
