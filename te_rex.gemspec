@@ -1,7 +1,6 @@
 # coding: utf-8
 #
-#
-#require_relative 'lib/te_rex/version'
+require './lib/te_rex/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "te_rex"
