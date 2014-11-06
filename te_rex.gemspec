@@ -1,11 +1,10 @@
 # coding: utf-8
 #
-#
-#require_relative 'lib/te_rex/version'
+require './lib/te_rex/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "te_rex"
-  spec.version       = "0.0.8"
+  spec.version       = TeRex::VERSION
   spec.authors       = ["Joshua Bowles"]
   spec.email         = ["jbowayles@gmail.com"]
   spec.description   = "Simple text processing for small data sets."
@@ -28,3 +27,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry-stack_explorer", "~> 0.4", ">= 0.4.9.1"
   #spec.add_development_dependency "simplecov"
 end
+
