@@ -2,7 +2,10 @@
 [![te_rex API Documentation](https://www.omniref.com/ruby/gems/te_rex.png)](https://www.omniref.com/ruby/gems/te_rex)
 
 A lot of power with a little reach.
+
 A little reach with a big bite.
+
+**If for some reason you have been using this, teh change from version `0.5` to `0.8` broke the initiallization of the classifier. See the git tags, tests, and examples.**
 
 The Bayes classifier is written to solve some small domain specific problems. This means it is not a classififer to be used for general problems where domain context is either unknown, general, or requires large data sets. In other words, you shouldn't use this gem.
 
