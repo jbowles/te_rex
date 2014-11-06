@@ -1,8 +1,11 @@
-require_relative 'lib/te_rex/version'
+# coding: utf-8
+#
+#
+#require_relative 'lib/te_rex/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "te_rex"
-  spec.version       = TeRex::VERSION
+  spec.version       = "0.0.8"
   spec.authors       = ["Joshua Bowles"]
   spec.email         = ["jbowayles@gmail.com"]
   spec.description   = "Simple text processing for small data sets."
