@@ -5,7 +5,10 @@ This branch is for testing large data sets. Merge master into it and run tests c
 [![te_rex API Documentation](https://www.omniref.com/ruby/gems/te_rex.png)](https://www.omniref.com/ruby/gems/te_rex)
 
 A lot of power with a little reach.
+
 A little reach with a big bite.
+
+**If for some reason you have been using this, teh change from version `0.5` to `0.8` broke the initiallization of the classifier. See the git tags, tests, and examples.**
 
 The Bayes classifier is written to solve some small domain specific problems. This means it is not a classififer to be used for general problems where domain context is either unknown, general, or requires large data sets. In other words, you shouldn't use this gem.
 
@@ -21,7 +24,11 @@ Just run `mt` [micro\_test](https://github.com/hopsoft/micro_test). For tests ag
 For usage see tests; though here is a snippet below. Also, if you don't know what Bayesian Classification is you should probably check it out (just google it): your classifier is only as good as your training data and training methods!
 
 ```ruby
-cls = TeRex::Classifier::Bayes.new("Refund", "Nonrefund")
+cls = TeRex::Classifier::Bayes.new(
+  {:tag => "Refund", :msg => "You'll get a refund"},
+  {:tag => "Nonrefund", :msg => "You won't get a refund"}
+)
+
 ["You will get a refund.","Full refund for you!","You will receive a full refund.","You may only get a partial refund."].each {|txt| cls.train("Refund", txt)}
 ["You will not get a refund.","There are no refunds.","Refunds not available.","You will not get a refund."].each {|txt| cls.train("Nonrefund", txt)}
 
