@@ -6,10 +6,15 @@ module TeRex
     class Bayes
 
       attr_accessor :category_counts, :total_words
+      attr_reader :messages
 
+      # categories = [{:tag => "Thing1", :msg => "Thing1 message"}, {:tag => "Thing2", :msg => "Thing2 message"}]
+      # initialize({:tag => "Refund", :msg => "You'll get a refund"}, {:tag => "Nonrefund", :msg => "You won't get a refund"})
       def initialize(*categories)
-        @clasif = Hash.new 
-        categories.each {|cat| @clasif[TeRex::Format.category_term(cat)] = Hash.new}
+        @clasif = Hash.new
+        @messages = Hash.new
+        categories.each {|cat| @clasif[TeRex::Format.category_term(cat[:tag])] = Hash.new}
+        categories.each {|cat| @messages[cat[:tag]] = cat[:msg]}
         @total_words = 0
         @category_counts = Hash.new(0)
       end
@@ -18,7 +23,7 @@ module TeRex
         category = TeRex::Format.category_term(ctgry)
         @category_counts[category] += 1
 
-        BayesData.index_frequency(text).each do |word, count| 
+        BayesData.index_frequency(text).each do |word, count|
           @clasif[category][word] ||= 0
           @clasif[category][word] += count
 
@@ -46,7 +51,8 @@ module TeRex
       end
 
       def classify(text)
-        (classifications(text).sort_by{|a| -a[1]})[0][0]
+        tag = (classifications(text).sort_by{|a| -a[1]})[0][0]
+        [tag, @messages[tag]]
       end
 
       def categories

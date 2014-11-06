@@ -22,7 +22,12 @@ class SparseBayesTest < MicroTest::Test
     "The cancellation policy will be determined when the rate is validated."
   ]
 
-  @@cls = TeRex::Classifier::Bayes.new("Refund", "Partrefund", "Nonrefund", "Unknown")
+  @@cls = TeRex::Classifier::Bayes.new(
+    {:tag => "Refund",     :msg => "We are pleased to offer you a refund"},
+    {:tag => "Partrefund", :msg => "You may receive a partial refund"},
+    {:tag => "Nonrefund",  :msg => "Much apologies, no refund to you"},
+    {:tag => "Unknown",    :msg => "Waht?"}
+  )
   @@refund.each {|txt| @@cls.train("Refund", txt) }
   @@partrefund.each {|txt| @@cls.train("Partrefund", txt) }
   @@norefund.each {|txt| @@cls.train("Nonrefund", txt) }
