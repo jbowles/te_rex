@@ -3,7 +3,7 @@ module TeRex
     require 'csv'
     class BaseErrorFile
 
-      attr_reader :sentences
+      attr_reader :sentences, :path
 
       @@csv_conf = {:headers => true}
 

@@ -2,7 +2,7 @@ module TeRex
   module Format
     class BasicFile
 
-      attr_reader :sentences
+      attr_reader :sentences, :path
 
       def initialize(file_path)
         @path = file_path
