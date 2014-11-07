@@ -42,7 +42,7 @@ The corpus builder is mostly used to test the classification on a larger data se
 ### Corpus builder
 
 ```rb
-pos_corpus = TeRex::Corpus::Body.new('~/training_data/corpora/movie/positive/cv**', TeRex::Format::BasicFile)
+pos_corpus = TeRex::Corpus::Body.new('/Users/jbowles/x/training_data/corpora/words/en*', TeRex::Format::BasicFile)
 pos_corpus.build
 
 # Then look at what you've got:

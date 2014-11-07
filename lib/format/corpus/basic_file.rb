@@ -22,8 +22,8 @@ module TeRex
             end
           end
         end
-
       end
+
     end
   end
 end
