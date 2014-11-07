@@ -2,7 +2,7 @@ module TeRex
   module Corpus
     class Body
 
-      attr_accessor :files, :sample_size, :training, :testing
+      attr_reader :files, :sample_size, :training, :testing
 
       def initialize(glob, klass)
         @glob = glob
@@ -11,8 +11,8 @@ module TeRex
 
       def build
         get_files
-        @training_sentences = partition_train
-        @testing_sentences = partition_test
+        @training = partition_train
+        @testing = partition_test
       end
 
       def get_files

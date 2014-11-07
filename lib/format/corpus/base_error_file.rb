@@ -3,6 +3,8 @@ module TeRex
     require 'csv'
     class BaseErrorFile
 
+      attr_reader :sentences
+
       @@csv_conf = {:headers => true}
 
       def initialize(file_path)
@@ -19,7 +21,7 @@ module TeRex
             accumulator << stripped_line
           end
         end
-        accumulator
+        @sentences ||= accumulator
       end
 
     end
