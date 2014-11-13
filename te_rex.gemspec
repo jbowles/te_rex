@@ -27,3 +27,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry-stack_explorer", "~> 0.4", ">= 0.4.9.1"
   #spec.add_development_dependency "simplecov"
 end
+
