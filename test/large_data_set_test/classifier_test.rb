@@ -7,15 +7,15 @@ class ClassifierTest < MicroTest::Test
       {:tag => "Negative", :msg => "Such Negative"}
     )
 
-    @pos_corpus = TeRex::Corpus::Body.new("corpora/movie_reviews/pos/cv**", TeRex::Format::BasicFile)
-    @pos_corpus.get_files
-    @@pos_train = @pos_corpus.partition_train
-    @@pos_test = @pos_corpus.partition_test
+    @pos_corpus = TeRex::Corpus::Body.new(glob: "corpora/movie_reviews/pos/cv**", format_klass: TeRex::Format::BasicFile)
+    @pos_corpus.build
+    @@pos_train = @pos_corpus.training
+    @@pos_test = @pos_corpus.testing
 
-    @neg_corpus = TeRex::Corpus::Body.new("corpora/movie_reviews/neg/cv**", TeRex::Format::BasicFile)
-    @neg_corpus.get_files
-    @@neg_train = @neg_corpus.partition_train
-    @@neg_test = @neg_corpus.partition_test
+    @neg_corpus = TeRex::Corpus::Body.new(glob: "corpora/movie_reviews/neg/cv**", format_klass: TeRex::Format::BasicFile)
+    @neg_corpus.build
+    @@neg_train = @neg_corpus.training
+    @@neg_test = @neg_corpus.testing
 
 
     @@pos_train.each {|txt| @@cls.train("Positive", txt)}
