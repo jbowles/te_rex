@@ -1,7 +1,7 @@
 module TeRex
   module Format
     require 'csv'
-    class BaseErrorFile
+    class ErrorFile
 
       attr_reader :sentences, :path
 
