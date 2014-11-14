@@ -4,7 +4,7 @@ module TeRex
 
       attr_reader :sentences, :path, :category
 
-      def initialize(file_path)
+      def initialize(file_path, klass)
         @path = file_path
         @category = klass
       end
