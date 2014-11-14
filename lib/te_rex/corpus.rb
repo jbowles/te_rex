@@ -33,10 +33,12 @@ module TeRex
         #super_set = build_superset
         corpus_set = partition_files_for_sentences
         #@sample_size = (superset.count.to_f * 0.75).round
-        @sample_size = 0.0
+        #@sample_size = 0.75
         @training = partition_training_by_sentence(corpus_set)
         @testing = partition_test_by_sentence(corpus_set)
-        count_all
+        c = count_all
+        @sample_size = (c.to_f * 0.75)
+        c
       end
 
       private
