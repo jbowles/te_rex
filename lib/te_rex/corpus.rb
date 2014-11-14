@@ -39,9 +39,10 @@ module TeRex
         count_all
       end
 
+      private
       def define_set
         @set ||= Dir[@glob].map do |file|
-          @format_klass.new(file)
+          @format_klass.new(file, @category_klass)
         end
         @set
       end
