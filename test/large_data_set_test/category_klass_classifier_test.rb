@@ -1,5 +1,11 @@
 require_relative "../../lib/te_rex"
-class ClassifierTest < MicroTest::Test
+class CategoryKlassClassifierTest < MicroTest::Test
+
+  class PositiveReview
+  end
+
+  class NegativeReview
+  end
 
   def self.setup
     @@cls = TeRex::Classifier::Bayes.new(
@@ -7,12 +13,12 @@ class ClassifierTest < MicroTest::Test
       {:tag => "Negative", :msg => "Such Negative"}
     )
 
-    @pos_corpus = TeRex::Corpus::Body.new(glob: "corpora/movie_reviews/pos/cv**", format_klass: TeRex::Format::BasicFile)
+    @pos_corpus = TeRex::Corpus::Body.new(glob: "corpora/movie_reviews/pos/cv**", format_klass: TeRex::Format::BasicFile, category_klass: PositiveReview)
     @pos_corpus.build
     @@pos_train = @pos_corpus.training
     @@pos_test = @pos_corpus.testing
 
-    @neg_corpus = TeRex::Corpus::Body.new(glob: "corpora/movie_reviews/neg/cv**", format_klass: TeRex::Format::BasicFile)
+    @neg_corpus = TeRex::Corpus::Body.new(glob: "corpora/movie_reviews/neg/cv**", format_klass: TeRex::Format::BasicFile, category_klass: NegativeReview)
     @neg_corpus.build
     @@neg_train = @neg_corpus.training
     @@neg_test = @neg_corpus.testing
@@ -20,6 +26,9 @@ class ClassifierTest < MicroTest::Test
 
     @@pos_train.each {|txt| @@cls.train("Positive", txt)}
     @@neg_train.each {|txt| @@cls.train("Negative", txt)}
+
+    #@@pos_train.each {|txt| @@cls.train("Positive", txt)}
+    #@@neg_train.each {|txt| @@cls.train("Negative", txt)}
   end
 
   def self.postest
@@ -68,3 +77,4 @@ class ClassifierTest < MicroTest::Test
   end
 
 end
+
