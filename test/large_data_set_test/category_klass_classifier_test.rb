@@ -26,9 +26,6 @@ class CategoryKlassClassifierTest < MicroTest::Test
 
     @@pos_train.each {|txt| @@cls.train("Positive", txt)}
     @@neg_train.each {|txt| @@cls.train("Negative", txt)}
-
-    #@@pos_train.each {|txt| @@cls.train("Positive", txt)}
-    #@@neg_train.each {|txt| @@cls.train("Negative", txt)}
   end
 
   def self.postest
@@ -54,14 +51,14 @@ class CategoryKlassClassifierTest < MicroTest::Test
   setup
 
   test "positive training set should contain at least 60% 'positive' labels" do
-    pos_ratio = ClassifierTest.postest
+    pos_ratio = CategoryKlassClassifierTest.postest
     puts "***** POS Trained on #{@@pos_train.count} instances, test on #{@@pos_test.count}, number of Positive categories: #{@@cls.category_counts[:Positive]}"
     puts "***** Accuracy of Positive classifier: #{pos_ratio}"
     assert pos_ratio > 0.60
   end
 
   test "negative training set should contain at least 60% 'negative' labels" do
-    neg_ratio = ClassifierTest.negtest
+    neg_ratio = CategoryKlassClassifierTest.negtest
     puts "***** NEG Trained on #{@@neg_train.count} instances, test on #{@@neg_test.count} instances, number of Negative categories: #{@@cls.category_counts[:Negative]}"
     puts "***** Accuracy of Negative classifier: #{neg_ratio}"
     assert neg_ratio > 0.60
