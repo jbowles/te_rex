@@ -30,15 +30,18 @@ module TeRex
       end
 
       def sentence_partition
-        #super_set = build_superset
         corpus_set = partition_files_for_sentences
-        #@sample_size = (superset.count.to_f * 0.75).round
-        #@sample_size = 0.75
         @training = partition_training_by_sentence(corpus_set)
         @testing = partition_test_by_sentence(corpus_set)
         c = count_all
         @sample_size = (c.to_f * 0.75)
         c
+      end
+
+      def build_superset
+        @set.reduce([]) do |memo,formatter|
+          memo << formatter.sentences
+        end.flatten
       end
 
       private
@@ -73,12 +76,6 @@ module TeRex
 
       def partition_test_by_sentence(c_set)
         c_set.sample(c_set.count * 0.25)
-      end
-
-      def build_superset
-        @set.reduce([]) do |memo,formatter|
-          memo << formatter.sentences
-        end.flatten
       end
 
       def count_all
