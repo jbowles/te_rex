@@ -2,10 +2,11 @@ module TeRex
   module Format
     class BrownFile
 
-      attr_accessor :sentences
+      attr_reader :sentences, :path, :category
 
-      def initialize(file_path)
+      def initialize(file_path, klass)
         @path = file_path
+        @category = klass
       end
 
       # Each line of file with Array object,

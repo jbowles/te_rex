@@ -2,10 +2,11 @@ module TeRex
   module Format
     class BasicFile
 
-      attr_reader :sentences, :path
+      attr_reader :sentences, :path, :category
 
       def initialize(file_path)
         @path = file_path
+        @category = klass
       end
 
       # Each line of file with Array object,

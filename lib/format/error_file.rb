@@ -3,12 +3,13 @@ module TeRex
     require 'csv'
     class ErrorFile
 
-      attr_reader :sentences, :path
+      attr_reader :sentences, :path, :category
 
       @@csv_conf = {:headers => true}
 
-      def initialize(file_path)
+      def initialize(file_path, klass)
         @path = file_path
+        @category = klass
       end
 
       # Each row of csv as Array object, strip it and return 
