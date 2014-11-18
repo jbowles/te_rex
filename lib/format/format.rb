@@ -1,7 +1,7 @@
 module TeRex
   module Format
     def self.category_term(t)
-      t.capitalize.intern
+      t.intern
     end
   end
 end
