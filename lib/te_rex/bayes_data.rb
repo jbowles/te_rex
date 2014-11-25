@@ -12,7 +12,7 @@ module TeRex
 
         # Remove cardinal terms (1st, 23rd, 42nd)
         def remove_cardinal(s)
-          s.gsub(/\d+\w{2}/, '')
+          s.gsub(/[0-9]{2}[a-z,A-Z]{2}/, '')
         end
 
         # Replace date times with TERM (09MAR04, 02-23-14, 2014/03/05)
