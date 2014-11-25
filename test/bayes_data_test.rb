@@ -54,9 +54,25 @@ class BayesDataTest < MicroTest::Test
 
     assert s11 == "moneyterm will be paid on datetime with moneyterm"
     assert s22 == "I get moneyterm on datetime and on datetime with %49 and %"
-    assert s33 == "And I have cdes in his one wi%th % refund too"
+    assert s33 == "And I have cdes in his one wi%th 100% refund too"
   end
 
+  test "check that error codes are not stripped out" do
+    h108 = "H108 PROCESS_FAIL 50008 Unable to cancel reservation. An unknown error has occurred. Please call us for more information."
+    h109 = "H109 PROCESS_FAIL 50008 Unable to cancel reservation. An unknown error has occurred. Please call us for more information."
+    h110 = "H110 PROCESS_FAIL 50008 Unable to cancel reservation. An unknown error has occurred. Please call us for more information."
+    h115 = "H115 UNABLE_TO_PROCESS_REQUEST 50010 Unable to obtain cancellation number. Please contact customer service."
+
+    s1 = TeRex::Classifier::BayesData.clean(h108)
+    s2 = TeRex::Classifier::BayesData.clean(h109)
+    s3 = TeRex::Classifier::BayesData.clean(h110)
+    s4 = TeRex::Classifier::BayesData.clean(h115)
+
+    assert s1 == "H108 PROCESSFAIL 50008 Unable to cancel reservation An unknown error has occurred Please call us for more information"
+    assert s2 == "H109 PROCESSFAIL 50008 Unable to cancel reservation An unknown error has occurred Please call us for more information"
+    assert s3 == "H110 PROCESSFAIL 50008 Unable to cancel reservation An unknown error has occurred Please call us for more information"
+    assert s4 == "H115 UNABLETOPROCESSREQUEST 50010 Unable to obtain cancellation number Please contact customer service"
+  end
   test "index frequency has correct counts" do
     s = 'Here is a sentence $141.34 that that $60 that 123.56 I need & & ^ % $c#@ to check the index is correct and okay.'
     result = TeRex::Classifier::BayesData.index_frequency(s)
@@ -64,7 +80,5 @@ class BayesDataTest < MicroTest::Test
     assert result[:moneyterm] == 3
     assert result[:sentenc] == 1
     assert result[:sentence] == 1
-
   end
-
 end

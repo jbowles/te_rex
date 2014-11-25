@@ -48,6 +48,11 @@ class CorpusTest < MicroTest::Test
     assert (22...27).map{|i| i}.include?((ratio * 100).to_i)
   end
 
+  test "sample size equals size of training set" do
+    sample = @@sent_corpus.total_sentences.to_f * 0.75
+    assert @@sent_corpus.sample_size == sample
+  end
+
   test "sentence counts are correct" do
     assert @@sent_corpus.set.count == 3
     assert @@sent_corpus.training.count == 9
