@@ -49,7 +49,6 @@ module TeRex
         @set ||= Dir[@glob].map do |file|
           @format_klass.new(file, @category_klass)
         end
-        @set
       end
 
       def partition_training_by_file
