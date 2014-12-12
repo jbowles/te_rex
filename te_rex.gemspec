@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.5", ">= 1.5.3"
   spec.add_development_dependency "rake", "~> 10.3", ">= 10.3.2"
-  spec.add_development_dependency "micro_test", "~> 0.4", ">= 0.4.4"
+  spec.add_development_dependency "pry-test", "~> 0.5", ">= 0.5.5"
   spec.add_development_dependency "pry", "~> 0.10", ">= 0.10.1"
   #spec.add_development_dependency "pry-debugger", "~> 0.2", ">= 0.2.3"
   spec.add_development_dependency "pry-rescue", "~> 1.4", ">= 1.4.1"

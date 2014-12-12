@@ -14,8 +14,6 @@ GEM
     fast-stemmer (1.0.2)
     interception (0.5)
     method_source (0.8.2)
-    micro_test (0.4.4)
-      os
     os (0.9.6)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -27,6 +25,8 @@ GEM
     pry-stack_explorer (0.4.9.1)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
+    pry-test (0.5.5)
+      os
     rake (10.3.2)
     slop (3.6.0)
 
@@ -35,9 +35,9 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.5, >= 1.5.3)
-  micro_test (~> 0.4, >= 0.4.4)
   pry (~> 0.10, >= 0.10.1)
   pry-rescue (~> 1.4, >= 1.4.1)
   pry-stack_explorer (~> 0.4, >= 0.4.9.1)
+  pry-test (~> 0.5, >= 0.5.5)
   rake (~> 10.3, >= 10.3.2)
   te_rex!

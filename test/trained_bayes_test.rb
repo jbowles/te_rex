@@ -1,5 +1,5 @@
 require_relative "../lib/te_rex"
-class TrainedBayesTest < MicroTest::Test
+class TrainedBayesTest < PryTest::Test
 
   #Dir["#{File.dirname(__FILE__)}/test_modules/**/*.rb"].each { |f| load(f) if !!(f =~ /^[^\.].+\.rb/)}
 

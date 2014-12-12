@@ -1,5 +1,5 @@
 require_relative "../lib/te_rex"
-class BayesDataTest < MicroTest::Test
+class BayesDataTest < PryTest::Test
 
   test "punctuation is removed (except %)" do
     s1 = "This * punctuation se%ntence ).!"
