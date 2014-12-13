@@ -1,0 +1,43 @@
+module TeRex
+  module Train
+    CREDITSERVICE = [
+      "Payment Failure happened. PAYMENT_FAILURE Unsuccessful Payment.",
+      "Payment Failure happened. PAYMENT_FAILURE com.orbitz.tbs.model.SystemException: Unknown exception caught stack is: com.orbitz.lapsang.http.client.HttpInvocationRequestException: Failed Lapsang Service Invocation. requestURL: http:\\/\\/amexapp01q.qa.orbitz.net\\/omp\\/payment\\/validate\\nrequestMethod: POST\\n\\tat com.orbitz.lapsang.http.client.AbstractHttpInvocationHandler.doObject(AbstractHttpInvocationHandler.java:330)\\n\\tat com.orbitz.lapsang.http.client.AbstractHttpInvocationHandler.invoke(AbstractHttpInvocationHandler.java:186",
+      "We're sorry but we're unable to process your request due to a backend connection failure.",
+      "We're sorry but we're unable to process your request due to a backend timeout",
+      "We're sorry but we're unable to process your request due to an unknown error.",
+      "We're sorry our system can not authenticate the information you have provided. An information mismatch has occurred. Please verify your credit card and billing information are correct and try again.",
+      "error.creditCardDeclined: Internal application error.:MessageReferenceId=UnknownMessageReferenceId. Exception=Invalid/missing subscriber name/merchant Id : CommonErrors::MSTError:504",
+      "error.creditCardDeclined: Internal application error.:MessageReferenceId=UnknownMessageReferenceId. Exception=Unknown failure : CommonErrors::MSTError:527",
+      "error.creditCardDeclined: Internal application error.:MessageReferenceId=UnknownMessageReferenceId. Exception=XML cannot be parsed by payment provider.: CommonErrors::MSTError:540",
+      "error.creditCardDeclined: Internal application error.:MessageReferenceId=UnknownMessageReferenceId.Exception=Authorization network could not reach issuing bank. : CommonErrors::MSTError:553",
+      "error.creditCardDeclined:Internal application error.:MessageReferenceId=UnknownMessageReferenceId. Exception=Internal error at payment provider - could be anything.: CommonErrors::MSTError:539",
+      "error.creditCardDeclined:Internal application error.:MessageReferenceId=UnknownMessageReferenceId. Exception=Invalid/missing amount: CommonErrors::MSTError:506",
+      "error.fraud",
+      "error.fraud.aegis",
+      "error.fraud.aegis.connectionFailure",
+      "error.fraud.aegis.timeout",
+      "error.fraud.db",
+      "error.fraud.invalidRequest",
+      "error.fraud.lodging",
+      "error.fraud.lodging.connectionFailure",
+      "error.fraud.lodging.timeout",
+      "error.fraud.payment",
+      "error.fraud.payment.connectionFailure",
+      "error.fraud.payment.timeout",
+      "error.fraud.paymentVault",
+      "error.fraud.paymentVault.connectionFailure",
+      "error.fraud.paymentVault.timeout",
+      "error.fraud.user",
+      "error.fraud.user.connectionFailure",
+      "error.fraud.user.timeout",
+      "error.payment",
+      "error.payment.ConnectionFailure",
+      "error.payment.PPSTimeout",
+      "error.payment.invalidXML",
+      "error.paymentVault",
+      "error.paymentVaultAccess.unknown.err",
+      "error.processFail"
+    ]
+  end
+end
