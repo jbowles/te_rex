@@ -1,18 +1,11 @@
 module TeRex
   module Train
     CREDITSERVICE = [
-      "Payment Failure happened. PAYMENT_FAILURE Unsuccessful Payment.",
-      "Payment Failure happened. PAYMENT_FAILURE com.orbitz.tbs.model.SystemException: Unknown exception caught stack is: com.orbitz.lapsang.http.client.HttpInvocationRequestException: Failed Lapsang Service Invocation. requestURL: http:\\/\\/amexapp01q.qa.orbitz.net\\/omp\\/payment\\/validate\\nrequestMethod: POST\\n\\tat com.orbitz.lapsang.http.client.AbstractHttpInvocationHandler.doObject(AbstractHttpInvocationHandler.java:330)\\n\\tat com.orbitz.lapsang.http.client.AbstractHttpInvocationHandler.invoke(AbstractHttpInvocationHandler.java:186",
-      "We're sorry but we're unable to process your request due to a backend connection failure.",
-      "We're sorry but we're unable to process your request due to a backend timeout",
-      "We're sorry but we're unable to process your request due to an unknown error.",
+      "mystiquebooking",
+      "Payment Failure happened. Unsuccessful Payment.",
+      "Payment Failure happened. com.orbitz.tbs.model.txn.PaymentException: Bad Auth. Causing CreditAuthResult:Unknown could not identify\\n\\tat com.orbitz.tbs.host.txn.omp.DefaultOmpProcessor.checkFailedAuth(DefaultOmpProcessor.java:180)\\n\\tat com.orbitz.tbs.host.txn.omp.DefaultOmpProcessor.validate(DefaultOmpProcessor.java:66)\\n\\tat com.orbitz.tbs.host.txn.command.book.BaseBookPaymentVerifyCommand.doValidate(BaseBookPaymentVerifyCommand.java:296",
+      "Payment Failure happened. com.orbitz.tbs.model.SystemException: Unknown exception caught stack is: com.orbitz.lapsang.http.client.HttpInvocationRequestException: Failed Lapsang Service Invocation. requestURL: http:\\/\\/amexapp01q.qa.orbitz.net\\/omp\\/payment\\/validate\\nrequestMethod: POST\\n\\tat com.orbitz.lapsang.http.client.AbstractHttpInvocationHandler.doObject(AbstractHttpInvocationHandler.java:330)\\n\\tat com.orbitz.lapsang.http.client.AbstractHttpInvocationHandler.invoke(AbstractHttpInvocationHandler.java:186",
       "We're sorry our system can not authenticate the information you have provided. An information mismatch has occurred. Please verify your credit card and billing information are correct and try again.",
-      "error.creditCardDeclined: Internal application error.:MessageReferenceId=UnknownMessageReferenceId. Exception=Invalid/missing subscriber name/merchant Id : CommonErrors::MSTError:504",
-      "error.creditCardDeclined: Internal application error.:MessageReferenceId=UnknownMessageReferenceId. Exception=Unknown failure : CommonErrors::MSTError:527",
-      "error.creditCardDeclined: Internal application error.:MessageReferenceId=UnknownMessageReferenceId. Exception=XML cannot be parsed by payment provider.: CommonErrors::MSTError:540",
-      "error.creditCardDeclined: Internal application error.:MessageReferenceId=UnknownMessageReferenceId.Exception=Authorization network could not reach issuing bank. : CommonErrors::MSTError:553",
-      "error.creditCardDeclined:Internal application error.:MessageReferenceId=UnknownMessageReferenceId. Exception=Internal error at payment provider - could be anything.: CommonErrors::MSTError:539",
-      "error.creditCardDeclined:Internal application error.:MessageReferenceId=UnknownMessageReferenceId. Exception=Invalid/missing amount: CommonErrors::MSTError:506",
       "error.fraud",
       "error.fraud.aegis",
       "error.fraud.aegis.connectionFailure",

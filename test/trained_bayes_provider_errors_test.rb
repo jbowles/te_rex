@@ -9,6 +9,7 @@ class TrainedBayesProviderErrorsTest < PryTest::Test
   @@credit_decline = TeRex::Train::CREDITDECLINE
   @@credit_service = TeRex::Train::CREDITSERVICE
   @@unexpected = TeRex::Train::UNEXPECTED
+  #@@unk = TeRex::Train::UNKNOWNERROR
 
   @@cls = TeRex::Classifier::Bayes.new(
     {:tag => "AvailabilityError",         :msg => "No hotel or room availability for request."},
@@ -19,6 +20,7 @@ class TrainedBayesProviderErrorsTest < PryTest::Test
     {:tag => "CreditDeclineError",        :msg => "Waht? Credit Card declined!"},
     {:tag => "CreditServiceError",        :msg => "External service problem processing"},
     {:tag => "UnexpectedResponseError",   :msg => "Unexpected response"}
+    #{:tag => "UnknownError",              :msg => "Unexpected response"},
   )
   @@avail.each {|txt| @@cls.train("AvailabilityError", txt) }
   @@book.each {|txt| @@cls.train("BookingError", txt) }
@@ -28,6 +30,7 @@ class TrainedBayesProviderErrorsTest < PryTest::Test
   @@credit_decline.each {|txt| @@cls.train("CreditDeclineError", txt) }
   @@credit_service.each {|txt| @@cls.train("CreditServiceError", txt) }
   @@unexpected.each {|txt| @@cls.train("UnexpectedResponseError", txt) }
+  #@@unk.each {|txt| @@cls.train("UnknownError", txt) }
 
 
   test "Training Data Provider Errors Set Test: Random exact match sould classify correctly" do
