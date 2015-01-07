@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    te_rex (0.0.12)
+    te_rex (0.0.13)
       fast-stemmer (~> 1.0, >= 1.0.2)
 
 GEM
