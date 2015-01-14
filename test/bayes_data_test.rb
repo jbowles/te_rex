@@ -10,9 +10,9 @@ class BayesDataTest < PryTest::Test
     s22 = TeRex::Classifier::BayesData.remove_punct(s2)
     s33 = TeRex::Classifier::BayesData.remove_punct(s3)
 
-    assert s11 == "This  punctuation se%ntence "
-    assert s22 == "Much  in  this   sentence too"
-    assert s33 == "And I have cdes in his one with 100% refund too"
+    assert s11 == "This   punctuation se%ntence    "
+    assert s22 == "Much   in   this     sentence too "
+    assert s33 == "And I  have c des in  his one with 100% refund too   "
   end
 
   test "datetime is removed and replaced" do
@@ -53,8 +53,8 @@ class BayesDataTest < PryTest::Test
     s33 = TeRex::Classifier::BayesData.clean(s3)
 
     assert s11 == "moneyterm will be paid on datetime with moneyterm"
-    assert s22 == "I get moneyterm on datetime and on datetime with %49 and %"
-    assert s33 == "And I have cdes in his one wi%th 100% refund too"
+    assert s22 == "I get moneyterm on datetime and on datetime with %49 and % "
+    assert s33 == "And I have c des in his one wi%th 100% refund too "
   end
 
   test "check that error codes are not stripped out" do
@@ -68,10 +68,10 @@ class BayesDataTest < PryTest::Test
     s3 = TeRex::Classifier::BayesData.clean(h110)
     s4 = TeRex::Classifier::BayesData.clean(h115)
 
-    assert s1 == "H108 PROCESSFAIL 50008 Unable to cancel reservation An unknown error has occurred Please call us for more information"
-    assert s2 == "H109 PROCESSFAIL 50008 Unable to cancel reservation An unknown error has occurred Please call us for more information"
-    assert s3 == "H110 PROCESSFAIL 50008 Unable to cancel reservation An unknown error has occurred Please call us for more information"
-    assert s4 == "H115 UNABLETOPROCESSREQUEST 50010 Unable to obtain cancellation number Please contact customer service"
+    assert s1 == "H108 PROCESS FAIL 50008 Unable to cancel reservation An unknown error has occurred Please call us for more information "
+    assert s2 == "H109 PROCESS FAIL 50008 Unable to cancel reservation An unknown error has occurred Please call us for more information "
+    assert s3 == "H110 PROCESS FAIL 50008 Unable to cancel reservation An unknown error has occurred Please call us for more information "
+    assert s4 == "H115 UNABLE TO PROCESS REQUEST 50010 Unable to obtain cancellation number Please contact customer service "
   end
   test "index frequency has correct counts" do
     s = 'Here is a sentence $141.34 that that $60 that 123.56 I need & & ^ % $c#@ to check the index is correct and okay.'
@@ -79,6 +79,6 @@ class BayesDataTest < PryTest::Test
 
     assert result[:moneyterm] == 3
     assert result[:sentenc] == 1
-    assert result[:sentence] == 1
+    assert result[:sentence] == 0
   end
 end

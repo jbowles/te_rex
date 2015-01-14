@@ -15,6 +15,11 @@ module TeRex
           s.gsub(/\n|\t|\r/,' ')
         end
 
+        # Remove sequences of whitespace
+        def remove_space_seq(s)
+          s.gsub(/\s{2,}/,' ')
+        end
+
         # Remove cardinal terms (1st, 23rd, 42nd)
         def remove_cardinal(s)
           s.gsub(/[0-9]{2}[a-z,A-Z]{2}/, '')
@@ -34,8 +39,8 @@ module TeRex
         # Each word in the string is interned and shows count in the document.
         def index_frequency(text)
           cfi = clean_stemmed_filtered_index(text)
-          cni = clean_filtered_index(text)
-          cfi.merge(cni)
+          #cni = clean_filtered_index(text)
+          cfi #.merge(cni)
         end
 
         # Return text with datetime and moneyterms replaced, remove cardinal terms (1st, 23rd, 42nd), remove punctuation.
@@ -45,7 +50,8 @@ module TeRex
           mt = money_term(dt)
           rp = remove_punct(mt)
           sp = remove_big_space(rp)
-          remove_cardinal(sp)
+          ss = remove_space_seq(sp)
+          remove_cardinal(ss)
         end
 
         # Return a filtered word freq index with stemmed morphemes and without extra punctuation or short words

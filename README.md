@@ -17,7 +17,11 @@ This Bayes classifier was written specifically to classify `cancellation policie
 The the small domain focus of this classifier can most be gleaned from the `BayesData` class. It cleans the text in way specific to the goals I had in mind.
 
 ## Tests
-Just run `mt` [micro\_test](https://github.com/hopsoft/micro_test). For tests against some pre-built larger corpora, which I consider the full test suite, you'll want to switch to the `testing` branch... then run the tests just as you would here in master: `mt`.
+Just run `pry-test` [pry-test](https://github.com/hopsoft/pry-test). For tests against some pre-built larger corpora, which I consider the full test suite, you'll want to switch to the `testing` branch... then run the tests just as you would here in master: `mt`.
+
+Testing is pretty liberal. The training and test data sets are small and a bit ambiguous in nature. Because of this the testing on classification can accept myultiple categories that are **similar in nature** (for example, `CreditServiceError` and `CreditDeclineError`). Also, **it is assumed people aren't really using this gem AND if you are using it IT IS ASSUMED YOU ARE TESTING CLASSIFICATION AGAINST YOUR OWN DATA SETS**. Therefore, I didn't see much need in providing strict classification tests; which are easy enough to construct in order to give the impression the classifier is working really good.
+
+Also, the tests should be run mutliple times given that input is not the same for each run of the test and the outputs are the result of statistical functions.
 
 ## Usage
 For usage see tests; though here is a snippet below. Also, if you don't know what Bayesian Classification is you should probably check it out (just google it): your classifier is only as good as your training data and training methods!
