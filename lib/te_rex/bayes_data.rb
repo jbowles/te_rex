@@ -7,7 +7,12 @@ module TeRex
 
         # Remove all kinds of explicit punctuation. 
         def remove_punct(s)
-          s.gsub(/(\,)|(\?)|(\.)|(\!)|(\;)|(\:)|(\")|(\@)|(\#)|(\$)|(\^)|(\&)|(\*)|(\()|(\))|(\_)|(\=)|(\+)|(\[)|(\])|(\\)|(\|)|(\<)|(\>)|(\/)|(\`)|(\{)|(\})/, '')
+          s.gsub(/(\,)|(\?)|(\.)|(\!)|(\;)|(\:)|(\")|(\@)|(\#)|(\$)|(\^)|(\&)|(\*)|(\()|(\))|(\_)|(\=)|(\+)|(\[)|(\])|(\\)|(\|)|(\<)|(\>)|(\/)|(\`)|(\{)|(\})/, ' ')
+        end
+
+        # Remove all kinds of newlines or big spaces: tab, newline, carraige return
+        def remove_big_space(s)
+          s.gsub(/\n|\t|\r/,' ')
         end
 
         # Remove cardinal terms (1st, 23rd, 42nd)
@@ -39,7 +44,8 @@ module TeRex
           dt = date_time(text)
           mt = money_term(dt)
           rp = remove_punct(mt)
-          remove_cardinal(rp)
+          sp = remove_big_space(rp)
+          remove_cardinal(sp)
         end
 
         # Return a filtered word freq index with stemmed morphemes and without extra punctuation or short words
@@ -58,12 +64,12 @@ module TeRex
         end
 
         private
-        # Downcase, filter against stop list, ignore sequences less that 2 chars, and stem words
+        # Downcase, filter against stop list, ignore sequences less that 1 chars, and stem words
         def stemmed_filtered_index(word_array)
           idx = Hash.new(0)
           word_array.each do |word|
             word.downcase!
-            if !TeRex::StopWord::LIST.include?(word) #&& word.length > 2
+            if !TeRex::StopWord::LIST.include?(word) && word.length > 1
               idx[word.stem.intern] += 1
             end
           end
