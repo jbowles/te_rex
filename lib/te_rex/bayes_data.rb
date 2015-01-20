@@ -39,8 +39,8 @@ module TeRex
         # Each word in the string is interned and shows count in the document.
         def index_frequency(text)
           cfi = clean_stemmed_filtered_index(text)
-          #cni = clean_filtered_index(text)
-          cfi #.merge(cni)
+          cni = clean_filtered_index(text)
+          cfi.merge(cni)
         end
 
         # Return text with datetime and moneyterms replaced, remove cardinal terms (1st, 23rd, 42nd), remove punctuation.
@@ -88,7 +88,7 @@ module TeRex
           idx = Hash.new(0)
           word_array.each do |word|
             word.downcase!
-            if !TeRex::StopWord::LIST.include?(word) #&& word.length > 2
+            if !TeRex::StopWord::LIST.include?(word) && word.length > 3
               idx[word.intern] += 1
             end
           end

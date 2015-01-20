@@ -79,6 +79,6 @@ class BayesDataTest < PryTest::Test
 
     assert result[:moneyterm] == 3
     assert result[:sentenc] == 1
-    assert result[:sentence] == 0
+    assert result[:sentence] == 1
   end
 end

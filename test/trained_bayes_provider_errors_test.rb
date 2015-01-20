@@ -8,7 +8,7 @@ class TrainedBayesProviderErrorsTest < PryTest::Test
   @@credit_data = TeRex::Train::CREDITDATA
   @@credit_decline = TeRex::Train::CREDITDECLINE
   @@credit_service = TeRex::Train::CREDITSERVICE
-  @@unexpected = TeRex::Train::UNEXPECTED
+  #@@unexpected = TeRex::Train::UNEXPECTED
   #@@unk = TeRex::Train::UNKNOWNERROR
 
   @@cls = TeRex::Classifier::Bayes.new(
@@ -19,7 +19,7 @@ class TrainedBayesProviderErrorsTest < PryTest::Test
     {:tag => "CreditDataError",           :msg => "Credit Card data is invalid"},
     {:tag => "CreditDeclineError",        :msg => "Waht? Credit Card declined!"},
     {:tag => "CreditServiceError",        :msg => "External service problem processing"},
-    {:tag => "UnexpectedResponseError",   :msg => "Unexpected response"}
+    #{:tag => "UnexpectedResponseError",   :msg => "Unexpected response"}
     #{:tag => "UnknownError",              :msg => "Unexpected response"},
   )
   @@avail.each {|txt| @@cls.train("AvailabilityError", txt) }
@@ -29,7 +29,7 @@ class TrainedBayesProviderErrorsTest < PryTest::Test
   @@credit_data.each {|txt| @@cls.train("CreditDataError", txt) }
   @@credit_decline.each {|txt| @@cls.train("CreditDeclineError", txt) }
   @@credit_service.each {|txt| @@cls.train("CreditServiceError", txt) }
-  @@unexpected.each {|txt| @@cls.train("UnexpectedResponseError", txt) }
+  #@@unexpected.each {|txt| @@cls.train("UnexpectedResponseError", txt) }
   #@@unk.each {|txt| @@cls.train("UnknownError", txt) }
 
 
@@ -64,7 +64,7 @@ class TrainedBayesProviderErrorsTest < PryTest::Test
   end
 
   test "total word counts correct" do
-    assert @@cls.total_words == 5042
+    assert @@cls.total_words == 5696
   end
 
 
