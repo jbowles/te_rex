@@ -58,5 +58,4 @@ class CorpusTest < PryTest::Test
     assert @@sent_corpus.training.count == 9
     assert @@sent_corpus.testing.count == 3
   end
-
 end

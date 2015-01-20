@@ -63,6 +63,10 @@ class TrainedBayesProviderErrorsTest < PryTest::Test
     #assert s_unexpected1 == ["UnexpectedResponseError", "Unexpected response"]
   end
 
+  test "total word counts correct" do
+    assert @@cls.total_words == 5042
+  end
+
 
 #  test "Training Data Set Test: cancel-cacancelical examples should classify correctly" do
 #
