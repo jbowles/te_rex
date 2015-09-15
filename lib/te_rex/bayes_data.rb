@@ -1,4 +1,4 @@
-require 'fast_stemmer'
+require 'jruby-stemmer'
 
 module TeRex
   module Classifier
@@ -76,7 +76,7 @@ module TeRex
           word_array.each do |word|
             word.downcase!
             if !TeRex::StopWord::LIST.include?(word) && word.length > 1
-              idx[word.stem.intern] += 1
+              idx[Jruby::Stemmer.stem(word).intern] += 1
             end
           end
 

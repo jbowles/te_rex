@@ -16,15 +16,16 @@ Gem::Specification.new do |spec|
   spec.test_files    = Dir["test/**/*.rb"]
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "fast-stemmer", "~> 1.0", ">= 1.0.2"
+  spec.add_dependency "jruby-stemmer"
+  #spec.add_dependency "fast-stemmer", "~> 1.0", ">= 1.0.2"
 
   spec.add_development_dependency "bundler", "~> 1.5", ">= 1.5.3"
   spec.add_development_dependency "rake", "~> 10.3", ">= 10.3.2"
-  spec.add_development_dependency "pry-test", "~> 0.5", ">= 0.5.5"
+  #spec.add_development_dependency "pry-test", "~> 0.5", ">= 0.5.5"
   spec.add_development_dependency "pry", "~> 0.10", ">= 0.10.1"
   #spec.add_development_dependency "pry-debugger", "~> 0.2", ">= 0.2.3"
-  spec.add_development_dependency "pry-rescue", "~> 1.4", ">= 1.4.1"
-  spec.add_development_dependency "pry-stack_explorer", "~> 0.4", ">= 0.4.9.1"
+  #spec.add_development_dependency "pry-rescue", "~> 1.4", ">= 1.4.1"
+  #spec.add_development_dependency "pry-stack_explorer", "~> 0.4", ">= 0.4.9.1"
   #spec.add_development_dependency "simplecov"
 end
 
