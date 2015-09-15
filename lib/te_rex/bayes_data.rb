@@ -76,7 +76,7 @@ module TeRex
           word_array.each do |word|
             word.downcase!
             if !TeRex::StopWord::LIST.include?(word) && word.length > 1
-              idx[Jruby::Stemmer.stem(word).intern] += 1
+              idx[JRuby::Stemmer.stem(word).intern] += 1
             end
           end
 
