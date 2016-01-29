@@ -1,5 +1,5 @@
 require_relative "../../lib/te_rex"
-class CategoryKlassClassifierTest < MicroTest::Test
+class CategoryKlassClassifierTest < PryTest::Test
 
   class PositiveReview
   end

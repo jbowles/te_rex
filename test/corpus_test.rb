@@ -1,5 +1,5 @@
 #require_relative "../lib/te_rex"
-class CorpusTest < MicroTest::Test
+class CorpusTest < PryTest::Test
   class MockErrorClassifier
   end
 

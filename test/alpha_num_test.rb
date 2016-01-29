@@ -1,5 +1,5 @@
 require_relative "../lib/te_rex"
-class AlphaNumTest < MicroTest::Test
+class AlphaNumTest < PryTest::Test
 
   test "generates array of lowercase roman characters" do
     res = TeRex::AlphaNum.gen
