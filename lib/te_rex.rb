@@ -14,6 +14,7 @@ require_relative "te_rex/alpha_num"
 require_relative "te_rex/bayes_data"
 require_relative "te_rex/bayes"
 require_relative "te_rex/corpus"
+require_relative "te_rex/classifier_and_summarization"
 
 module TeRex
 end
