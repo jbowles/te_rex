@@ -5,7 +5,7 @@ module TeRex
   module Classifier
     class Bayes
 
-      attr_reader :category_counts, :total_words, :messages
+      attr_reader :category_counts, :total_words, :messages, :clasif
 
       # categories = [{:tag => "Thing1", :msg => "Thing1 message"}, {:tag => "Thing2", :msg => "Thing2 message"}]
       # initialize({:tag => "Refund", :msg => "You'll get a refund"}, {:tag => "Nonrefund", :msg => "You won't get a refund"})
