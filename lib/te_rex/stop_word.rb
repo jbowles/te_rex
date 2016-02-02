@@ -120,5 +120,8 @@ module TeRex
       ]
 
     LIST = ENTERPRISE + DATES_TIMES + CONNECTOR
+
+    HUMAN_NAME_PREFIXES_OR_ABREVIATIONS = ['Mr.', 'Mrs.', 'Ms.', 'Dr.', 'Sr.', 'Maj.', 'St.', 'Lt.', 'Sen.', 'Jan.', 'Feb.', 'Mar.', 'Apr.', "Jun.", 'Jul.', 'Aug.', 'Sep', 'Oct.', 'Nov.', 'Dec.']
+    DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
   end
 end

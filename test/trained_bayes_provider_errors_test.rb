@@ -63,104 +63,14 @@ class TrainedBayesProviderErrorsTest < PryTest::Test
     #assert s_unexpected1 == ["UnexpectedResponseError", "Unexpected response"]
   end
 
-  test "total word counts correct" do
-    assert @@cls.total_words == 5696
+  #test "total word counts correct" do
+  #  assert @@cls.total_words == 5696
+  #end
+
+  test "text summarization should work" do
+    res = @@cls.classify_and_summarize("com. travelnow. supplier. hotel. merchant. translator. Translator Exception: Rate Detail Service threw an exception. Query ID was and PropID:")
+    assert res == "this"
   end
-
-
-#  test "Training Data Set Test: cancel-cacancelical examples should classify correctly" do
-#
-#    avail_s1 = "You will get a full avail and free cancellation"
-#    partavail_s1 = "You will get a avail if you cancel or change your reservation before 0201 AM on 01/31/14"
-#    noavail_s1 = "You will get a cancel-avail"
-#    cancel_forbidden_s1 = "You will get a cancelsense am I writing here."
-#
-#    avail_s11 = @@cls.classify(avail_s1)
-#    partavail_s11 = @@cls.classify(partavail_s1)
-#    noavail_s11 = @@cls.classify(noavail_s1)
-#    cancel_forbidden_s11 = @@cls.classify(cancel_forbidden_s1)
-#
-#    assert avail_s11 == ["avail", "We are pleased to offer you a avail"]
-#    assert partavail_s11 == ["Partavail", "You may receive a book avail"]
-#    assert noavail_s11 == ["cancelavail", "Much apologies, no avail to you"]
-#    assert cancel_forbidden_s11 == ["cancel_forbiddennown", "Waht?"]
-#  end
-#
-#  test "Training Data Set Test: Micro examples should return correct classification" do
-#
-#    s1 = "free cancellation"
-#    s2 = "If you cancel or change your reservation before"
-#    s3 = "cancel-avail"
-#    s4 = "policy rate validated."
-#
-#    s11 = @@cls.classify(s1)
-#    s22 = @@cls.classify(s2)
-#    s33 = @@cls.classify(s3)
-#    s44 = @@cls.classify(s4)
-#
-#    assert s11 == ["avail", "We are pleased to offer you a avail"]
-#    assert s22 == ["Partavail", "You may receive a book avail"]
-#    assert s33 == ["cancelavail", "Much apologies, no avail to you"]
-#    assert s44 == ["cancel_forbiddennown", "Waht?"]
-#
-#    assert s11 != ["Partavail", "You may receive a book avail"]
-#    assert s22 != ["cancelavail", "Much apologies, no avail to you"]
-#    assert s33 != ["cancel_forbiddennown", "Waht?"]
-#    assert s44 != ["avail", "We are pleased to offer you a avail"]
-#  end
-#
-#  test "Training Data Set Test: Micro examples should NOT match fake classes" do
-#
-#    s1 = "free cancellation"
-#    s2 = "book avail"
-#    s3 = "no avail"
-#    s4 = "policy rate validated."
-#
-#    s11 = @@cls.classify(s1)
-#    s22 = @@cls.classify(s2)
-#    s33 = @@cls.classify(s3)
-#    s44 = @@cls.classify(s4)
-#
-#    assert s11 != ["Computers", "computers yay!"]
-#    assert s22 != ["Science", "science yay!"]
-#    assert s33 != ["Entertainment", "entertainment yay!"]
-#    assert s44 != ["Sports", "sports yay!"]
-#  end
-#
-#  test "Training Data Set Test: Ambiguous examples should return 'cancel_forbiddennown'" do
-#
-#    s1 = "gobbly goop droop blithely toadwakle Grimpleshtein uf Varendorrf vun muscilaty"
-#    s2 = "The United States announced on Tuesday it will send 3,000 troops to help tackle the Ebola outbreak as part of a ramped-up plan, including a major deployment in Liberia."
-#    s3 = "United Parcel Service Inc is almost doubling the number of seasonal employees it hires for this year's holiday shopping season as it aims to avoid a repeat of last year's network breakdown."
-#    s4 = "Alberto Contador wrapped up his third Vuelta a España triumph when he comfortably held on to his overall lead in the 21st and final stage time trial in a rain-soaked Santiago de Compostela on Sunday."
-#
-#    s11 = @@cls.classify(s1)
-#    s22 = @@cls.classify(s2)
-#    s33 = @@cls.classify(s3)
-#    s44 = @@cls.classify(s4)
-#
-#    assert s11 == ["cancel_forbiddennown", "Waht?"]
-#    assert s22 == ["cancel_forbiddennown", "Waht?"] 
-#    assert s33 == ["cancel_forbiddennown", "Waht?"]
-#    assert s44 == ["cancel_forbiddennown", "Waht?"]
-#  end
-#
-#  test "Training Data Set Test: Category counts are equivalent with number of training data per class" do
-#
-#    assert @@cls.category_counts[:avail] == @@avail.count 
-#    assert @@cls.category_counts[:Partavail] == @@partavail.count 
-#    assert @@cls.category_counts[:cancelavail] == @@noavail.count 
-#    assert @@cls.category_counts[:cancel_forbiddennown] == @@cancel_forbiddennown.count 
-#
-#  end
-#
-#  test "Sparse Data Set Test: Training categories should NOT be undertrained... except 'cancel_forbiddennown'" do
-#    info = @@cls.training_description
-#    puts "\nUndertraining data for SPARSE DATA SET: #{info}"
-#    res = @@cls.under_trained?
-#    assert res[0].include? :cancel_forbiddennown
-#  end
-
 end
 
 
