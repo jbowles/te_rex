@@ -5,8 +5,8 @@ module TeRex
         @category_names = []
         @category_wc_hashes = []
       end
-      def classify_and_summarize_plain_text text
-        word_stems = text.downcase.scan(/[a-z]+/)
+      def classify_and_summarize_plain_text(text, cutoff: 0.8)
+        word_stems = text.downcase.scan(/[a-z0-9]+/)
         scores = Array.new(@category_names.length)
         @category_names.length.times {|i|
           scores[i] = score(@category_wc_hashes[i], word_stems)
@@ -17,11 +17,11 @@ module TeRex
         sentence_scores = Array.new(breaks.length)
         breaks.length.times {|i| sentence_scores[i] = 0}
         breaks.each_with_index {|sentence_break, i|
-          tokens = text[sentence_break[0]..sentence_break[1]].downcase.scan(/[a-z]+/)
+          tokens = text[sentence_break[0]..sentence_break[1]].downcase.scan(/[a-z0-9]+/)
           tokens.each {|token| sentence_scores[i] += best_hash[token]}
           sentence_scores[i] *= 100.0 / (1 + tokens.length)
         }
-        score_cutoff = 0.8 * sentence_scores.max
+        score_cutoff = cutoff * sentence_scores.max
         summary = ''
         sentence_scores.length.times {|i|
           if sentence_scores[i] >= score_cutoff
@@ -32,7 +32,7 @@ module TeRex
       end
       def train file_and_topic_list
         file_and_topic_list.each {|file, category|
-          words = File.new(file).read.downcase.scan(/[a-z]+/)
+          words = File.new(file).read.downcase.scan(/[a-z0-9]+/)
           hash = Hash.new(0)
           words.each {|word| hash[word] += 1 unless TeRex::StopWord::LIST.index(word) }
           scale = 1.0 / words.length
@@ -60,15 +60,14 @@ module TeRex
             current_token = ''
           elsif ch == '.'
             current_token += ch
-            if !TeRex::StopWord::HUMAN_NAME_PREFIXES_OR_ABREVIATIONS.member?(current_token) && 
-               !TeRex::StopWord::DIGITS.member?(current_token[-2..-2])
+            if !TeRex::StopWord::HUMAN_NAME_PREFIXES_OR_ABREVIATIONS.member?(current_token) && !TeRex::StopWord::DIGITS.member?(current_token[-2..-2])
               boundary_list << [start, index]
               current_token = ''
               start = index + 2
             else
               current_token += ch
             end
-          elsif ['!', '?'].member?(ch)
+          elsif ['!', '?', '\n', '\r'].member?(ch)
               boundary_list << [start, index]
               current_token = ''
               start = index + 2
