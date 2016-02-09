@@ -64,7 +64,7 @@ class TrainedBayesProviderErrorsTest < PryTest::Test
   end
 
   test "total word counts correct" do
-    assert @@cls.total_words == 5696
+    assert @@cls.total_words == 4536
   end
 
 
