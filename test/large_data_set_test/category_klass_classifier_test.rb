@@ -30,37 +30,43 @@ class CategoryKlassClassifierTest < PryTest::Test
 
   def self.postest
     tmp =[]
-    @@pos_test.each do |example| 
+    @@pos_test.each do |example|
       tmp << @@cls.classify(example)
     end
 
     pos_count = tmp.select{|t| t[0] == "Positive"}.count
-    pos_count.to_f/tmp.count.to_f
+    [(pos_count.to_f/tmp.count.to_f),  pos_count, tmp.count]
   end
 
   def self.negtest
     tmp = []
-    @@neg_test.each do |example| 
+    @@neg_test.each do |example|
       tmp << @@cls.classify(example)
     end
 
     neg_count = tmp.select{|t| t[0] == "Negative"}.count
-    neg_count.to_f/tmp.count.to_f
+    [(neg_count.to_f/tmp.count.to_f), neg_count, tmp.count]
   end
 
   setup
 
-  test "positive training set should contain at least 60% 'positive' labels" do
-    pos_ratio = CategoryKlassClassifierTest.postest
+  test "positive/negative training set should contain at least 60% 'positive' labels" do
+    positron = CategoryKlassClassifierTest.postest
+    pos_ratio = positron[0]
+    negitron = CategoryKlassClassifierTest.negtest
+    neg_ratio = negitron[0]
+
+    totaltron = positron[1] + negitron[1]
+    aggretron = positron[2] + negitron[2]
+    accutron =  totaltron.to_f/aggretron.to_f
+
     puts "***** POS Trained on #{@@pos_train.count} instances, test on #{@@pos_test.count}, number of Positive categories: #{@@cls.category_counts[:Positive]}"
     puts "***** Accuracy of Positive classifier: #{pos_ratio}"
-    assert pos_ratio > 0.60
-  end
-
-  test "negative training set should contain at least 60% 'negative' labels" do
-    neg_ratio = CategoryKlassClassifierTest.negtest
     puts "***** NEG Trained on #{@@neg_train.count} instances, test on #{@@neg_test.count} instances, number of Negative categories: #{@@cls.category_counts[:Negative]}"
     puts "***** Accuracy of Negative classifier: #{neg_ratio}"
+    puts "TOTAL NAIVE ACCURACY: #{accutron}"
+
+    assert pos_ratio > 0.60
     assert neg_ratio > 0.60
   end
 
